@@ -1,0 +1,91 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="MainTittle">
+        <item name="android:textSize">100dip</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">75dip</item>
+        <item name="android:paddingBottom">40dip</item>
+    </style>
+
+    <style name="SubTittle">
+        <item name="android:textSize">60dip</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">50dip</item>
+        <item name="android:paddingBottom">30dip</item>
+    </style>
+
+    <style name="MainButton">
+        <item name="android:textSize">30dip</item>
+        <item name="android:padding">30dip</item>
+        <item name="android:width">190dip</item>
+        <item name="android:height">100dip</item>
+        <item name="android:layout_marginTop">@dimen/highPadding</item>
+    </style>
+
+    <style name="SubButton">
+        <item name="android:textSize">30dip</item>
+        <item name="android:padding">30dip</item>
+        <item name="android:width">290dip</item>
+        <item name="android:height">100dip</item>
+        <item name="android:layout_marginTop">@dimen/regularPadding</item>
+    </style>
+
+    <style name="RegularButton">
+        <item name="android:textSize">30dip</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:width">200dip</item>
+        <item name="android:height">80dip</item>
+        <item name="android:layout_marginTop">@dimen/lowPadding</item>
+        <item name="android:layout_marginBottom">@dimen/lowPadding</item>
+    </style>
+
+    <style name="SmallButton">
+        <item name="android:textSize">20dip</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:width">90dip</item>
+        <item name="android:height">60dip</item>
+        <item name="android:layout_marginTop">@dimen/lowPadding</item>
+    </style>
+
+    <style name="BigTextView">
+        <item name="android:textSize">60dip</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:width">100dip</item>
+        <item name="android:height">80dip</item>
+        <item name="android:layout_marginTop">@dimen/regularPadding</item>
+    </style>
+
+    <style name="RegularTextView">
+        <item name="android:textSize">45dip</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:width">100dip</item>
+        <item name="android:height">80dip</item>
+        <item name="android:layout_marginTop">@dimen/regularPadding</item>
+    </style>
+
+    <style name="SmallTextView">
+        <item name="android:textSize">30dip</item>
+        <item name="android:width">270dip</item>
+        <item name="android:height">40dip</item>
+        <item name="android:layout_marginTop">@dimen/veryLowPadding</item>
+    </style>
+
+    <style name="MessageTextView">
+        <item name="android:textSize">30dip</item>
+        <item name="android:width">690dip</item>
+        <item name="android:height">40dip</item>
+        <item name="android:layout_marginTop">@dimen/veryLowPadding</item>
+        <item name="android:layout_marginBottom">@dimen/lowPadding</item>
+    </style>
+
+    <style name="SmallEditText">
+        <item name="android:textSize">30dip</item>
+        <item name="android:width">260dip</item>
+        <item name="android:height">40dip</item>
+        <item name="android:layout_marginTop">@dimen/veryLowPadding</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+</resources>

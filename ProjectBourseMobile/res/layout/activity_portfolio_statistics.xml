@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/portfolioName"
+        style="@style/SubTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@style/MessageTextView"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:text="@string/portfolioStocks"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:width="670dip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/lowPadding" >
+
+        <ListView
+            android:id="@+id/symbolListView"
+            android:layout_width="184dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/percentageEarnings"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10" >
+
+        </ListView>
+
+        <ListView
+            android:id="@+id/netEarnings"
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07" >
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/goToMenu"
+            style="@style/RegularButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/goToMenu" />
+    </LinearLayout>
+
+</LinearLayout>

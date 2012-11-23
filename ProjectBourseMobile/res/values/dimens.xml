@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="highPadding">140dip</dimen>
+    <dimen name="regularPadding">90dip</dimen>
+    <dimen name="lowPadding">25dip</dimen>
+    <dimen name="veryLowPadding">5dip</dimen>
+
+</resources>

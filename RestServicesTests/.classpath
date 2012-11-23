@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/asm-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/asm-analysis-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/asm-commons-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/asm-tree-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/asm-util-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/groovy-1.8.4.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/hamcrest-core-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/hamcrest-library-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/httpclient-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/httpcore-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/httpmime-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/restAssuredDependencies/tagsoup-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/rest-assured-1.7.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ProjectBourseCommons"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

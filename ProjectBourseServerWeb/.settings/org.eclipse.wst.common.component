@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ProjectBourseServerWeb">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="ProjectBourseServerEJB.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ProjectBourseServerEJB/ProjectBourseServerEJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ProjectBourseCommons.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ProjectBourseCommons/ProjectBourseCommons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/ProjectBourseServerWeb/build/classes"/>
+        <property name="context-root" value="ProjectBourseServerWeb"/>
+    </wb-module>
+</project-modules>
