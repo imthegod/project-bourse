@@ -22,14 +22,14 @@ import co.je.thesis.mobile.R;
 import co.je.thesis.mobile.communication.analysis.AnalysisServicesConsumer;
 import co.je.thesis.mobile.logic.analysisManager.AnalysisManager;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
-import co.je.thesis.mobile.presentation.dialogs.CreateDialogActivity;
+import co.je.thesis.mobile.presentation.dialogs.ICreateDialogActivity;
 import co.je.thesis.mobile.presentation.dialogs.CreatePortfolioDialog;
 import co.je.thesis.mobile.presentation.dialogs.SelectPortfolioDialog;
 import co.je.thesis.mobile.presentation.portfolio.AddSpecificStockActivity;
 import co.je.thesis.mobile.presentation.portfolio.EditStockActivity;
 
 public class ShowAnalysisResults extends Activity implements OnItemClickListener,
-CreateDialogActivity {
+ICreateDialogActivity {
 
 	private ArrayAdapter<String> baseStocksArrayAdapter;
 

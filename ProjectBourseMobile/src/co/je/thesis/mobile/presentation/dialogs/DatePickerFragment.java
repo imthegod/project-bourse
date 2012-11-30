@@ -52,7 +52,7 @@ public class DatePickerFragment extends DialogFragment implements OnDateSetListe
 	@Override
 	public void onDestroy() {
 		
-		CreateDialogActivity createAnalysisActivity = (CreateDialogActivity) getActivity();
+		ICreateDialogActivity createAnalysisActivity = (ICreateDialogActivity) getActivity();
 		createAnalysisActivity.setDialogAnswer(resultDate);
 		super.onDestroy();
 	}

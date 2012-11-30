@@ -27,7 +27,7 @@ public class LimitChecker {
 			dataRetriever.execute(params);
 			lastTradePice = dataRetriever.get();
 			
-			System.out.println("LimitChecker: lastTradePrice: " + stockSymbol + ", " + lastTradePice);
+//			System.out.println("LimitChecker: lastTradePrice: " + stockSymbol + ", " + lastTradePice);
 
 		} catch (InterruptedException e) {
 
@@ -46,7 +46,7 @@ public class LimitChecker {
 		double lastTradePrice = getStockLastTradePrice(stock.getSymbol());
 
 		boolean isOutOfLimits = false;
-
+		
 		if (lastTradePrice <= stock.getStopLoss1()) {
 
 			isOutOfLimits = true;
@@ -68,7 +68,7 @@ public class LimitChecker {
 			isOutOfLimits = true;
 
 		} else if (lastTradePrice >= stock.getTakeProfit3()) {
-
+			
 			isOutOfLimits = true;
 		}
 

@@ -1,6 +1,6 @@
 package co.je.thesis.mobile.presentation.dialogs;
 
-public interface CreateDialogActivity {
+public interface ICreateDialogActivity {
 	
 	public void setDialogAnswer(String dialogAnswer);
 }

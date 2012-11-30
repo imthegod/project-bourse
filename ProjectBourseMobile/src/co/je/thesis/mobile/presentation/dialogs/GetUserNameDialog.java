@@ -66,7 +66,7 @@ public class GetUserNameDialog extends DialogFragment implements OnClickListener
 	@Override
 	public void onDestroy() {
 		
-		CreateDialogActivity mainActivity = (CreateDialogActivity) getActivity();
+		ICreateDialogActivity mainActivity = (ICreateDialogActivity) getActivity();
 		mainActivity.setDialogAnswer(userName);
 		super.onDestroy();
 	}

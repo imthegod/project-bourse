@@ -45,7 +45,7 @@ public class SelectPortfolioDialog extends DialogFragment {
 
 				selectedPortfolioName = portfolioNames[which];
 				
-				CreateDialogActivity hostActivity = (CreateDialogActivity) getActivity();
+				ICreateDialogActivity hostActivity = (ICreateDialogActivity) getActivity();
 				hostActivity.setDialogAnswer(selectedPortfolioName);
 			}
 		});

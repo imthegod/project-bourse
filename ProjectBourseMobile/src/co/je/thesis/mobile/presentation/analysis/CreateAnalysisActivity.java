@@ -41,11 +41,11 @@ import co.je.thesis.mobile.communication.dsl.DSLServicesConsumer;
 import co.je.thesis.mobile.communication.rules.RulesServicesConsumer;
 import co.je.thesis.mobile.logic.analysisManager.AnalysisManager;
 import co.je.thesis.mobile.presentation.UIUtils;
-import co.je.thesis.mobile.presentation.dialogs.CreateDialogActivity;
+import co.je.thesis.mobile.presentation.dialogs.ICreateDialogActivity;
 import co.je.thesis.mobile.presentation.dialogs.DatePickerFragment;
 
 public class CreateAnalysisActivity extends Activity implements OnClickListener,
-OnItemSelectedListener, TextWatcher, OnEditorActionListener, CreateDialogActivity {
+OnItemSelectedListener, TextWatcher, OnEditorActionListener, ICreateDialogActivity {
 
 	private static final String FIRST_ITEM = "Select one";
 
@@ -316,18 +316,21 @@ OnItemSelectedListener, TextWatcher, OnEditorActionListener, CreateDialogActivit
 
 	public void setDialogAnswer(String dialogAnswer) {
 
-		if (!dialogAnswer.isEmpty()) {
+		if (dialogAnswer != null) {
+			
+			if (!dialogAnswer.isEmpty()) {
 
-			DSLElementDTO dslElementDTO = new DSLElementDTO(DSLCategories.TIME_FRAME, dialogAnswer);
-			ArrayList<String> spinnerItems = getNextSpinnerItems(dslElementDTO);
+				DSLElementDTO dslElementDTO = new DSLElementDTO(DSLCategories.TIME_FRAME, dialogAnswer);
+				ArrayList<String> spinnerItems = getNextSpinnerItems(dslElementDTO);
 
-			if (spinnerItems.size() > 0) {
+				if (spinnerItems.size() > 0) {
 
-				addSpinner(spinnerItems);
+					addSpinner(spinnerItems);
 
-			} else {
+				} else {
 
-				addButtons();
+					addButtons();
+				}
 			}
 		}
 	}

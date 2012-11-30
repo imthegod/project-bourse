@@ -11,4 +11,20 @@ public class CommunicationsConstants {
 	public static final String PORT = "8080";
 	
 	public static final String BASE_URL = "http://" + IP_ADDRESS + ":" + PORT + "/ProjectBourseServerWeb/rest";
+	
+//	private String ipAddress;
+//	private String port;
+//	
+//	public CommunicationsConstants(String ipAddress, String port) {
+//		
+//		this.ipAddress = ipAddress;
+//		this.port = port;
+//	}
+//	
+//	public String getBaseUrl() {
+//		
+//		String baseUrl = "http://" + ipAddress + ":" + port + "/ProjectBourseServerWeb/rest";;
+//		
+//		return baseUrl;
+//	}
 }

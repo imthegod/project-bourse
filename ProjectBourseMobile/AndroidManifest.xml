@@ -28,7 +28,7 @@
             android:label="@string/title_activity_portfolio" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="co.je.thesis.mobile.MainActivity" />
+                android:value="co.je.thesis.mobile.presentation.MainActivity" />
         </activity>
         <activity
             android:name=".presentation.portfolio.CreatePortfolioActivity"
@@ -54,29 +54,23 @@
         <activity
             android:name=".presentation.portfolio.PortfolioAndStocksActivity"
             android:label="@string/title_activity_portfolio_and_stocks" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.portfolio.PortfolioActivity" />
         </activity>
         <activity
             android:name=".presentation.portfolio.AddStockActivity"
             android:label="@string/title_activity_add_stock" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.portfolio.PortfolioActivity" />
         </activity>
         <activity
             android:name=".presentation.portfolio.EditStockActivity"
             android:label="@string/title_activity_edit_stock" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.portfolio.PortfolioActivity" />
         </activity>
         <activity
             android:name=".presentation.analysis.AnalysisActivity"
@@ -109,29 +103,17 @@
         <activity
             android:name=".presentation.analysis.ShowPendingAnalysis"
             android:label="@string/title_activity_show_pending_analysis" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.analysis.AnalysisActivity" />
         </activity>
         <activity
             android:name=".presentation.portfolio.AddSpecificStockActivity"
             android:label="@string/title_activity_add_specific_stock" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.portfolio.EditStocksOutOfLimitsActivity"
             android:label="@string/title_activity_edit_stocks_out_of_limits" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver
@@ -143,56 +125,32 @@
         <activity
             android:name=".presentation.statistics.StatisticsActivity"
             android:label="@string/title_activity_select_statistics" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.MainActivity" />
         </activity>
         <activity
             android:name=".presentation.statistics.SelectPortfolioActivity"
             android:label="@string/title_activity_select_portfolio" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="co.je.thesis.mobile.presentation.MainActivity" />
         </activity>
         <activity
             android:name=".presentation.statistics.SelectStockActivity"
             android:label="@string/title_activity_select_stock" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.statistics.PortfolioStatisticsActivity"
             android:label="@string/title_activity_portfolio_statistics" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.statistics.StockStatisticsActivity"
             android:label="@string/title_activity_stock_statistics" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.analysis.AddRuleToAnalysisActivity"
             android:label="@string/title_activity_add_rule_to_analysis" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

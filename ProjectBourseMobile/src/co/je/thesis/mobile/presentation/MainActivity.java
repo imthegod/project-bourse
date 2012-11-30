@@ -20,12 +20,12 @@ import co.je.thesis.mobile.communication.utils.TestServerIsAliveAsyncTask;
 import co.je.thesis.mobile.logic.stockController.AlarmBroadcastReceiver;
 import co.je.thesis.mobile.persistence.userPersistence.UserPersistence;
 import co.je.thesis.mobile.presentation.analysis.AnalysisActivity;
-import co.je.thesis.mobile.presentation.dialogs.CreateDialogActivity;
+import co.je.thesis.mobile.presentation.dialogs.ICreateDialogActivity;
 import co.je.thesis.mobile.presentation.dialogs.GetUserNameDialog;
 import co.je.thesis.mobile.presentation.portfolio.PortfolioActivity;
 import co.je.thesis.mobile.presentation.statistics.SelectPortfolioActivity;
 
-public class MainActivity extends Activity implements OnClickListener, CreateDialogActivity {
+public class MainActivity extends Activity implements OnClickListener, ICreateDialogActivity {
 
 	public static final String TAG = "MainActivity";
 
@@ -176,10 +176,16 @@ public class MainActivity extends Activity implements OnClickListener, CreateDia
 
 	public void setDialogAnswer(String dialogAnswer) {
 
-		UserPersistence userPersistence = new UserPersistence(this);
-		userPersistence.setUserName(dialogAnswer);
+		if (dialogAnswer != null) {
+			
+			if (!dialogAnswer.isEmpty()) {
+				
+				UserPersistence userPersistence = new UserPersistence(this);
+				userPersistence.setUserName(dialogAnswer);
 
-		Intent analysisIntent = new Intent(this, AnalysisActivity.class);
-		startActivity(analysisIntent);
+				Intent analysisIntent = new Intent(this, AnalysisActivity.class);
+				startActivity(analysisIntent);
+			}
+		}
 	}
 }

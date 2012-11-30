@@ -65,7 +65,7 @@ public class CreatePortfolioDialog extends DialogFragment implements OnClickList
 	@Override
 	public void onDestroy() {
 		
-		CreateDialogActivity hostActivity = (CreateDialogActivity) getActivity();
+		ICreateDialogActivity hostActivity = (ICreateDialogActivity) getActivity();
 		hostActivity.setDialogAnswer(portfolioName);
 		super.onDestroy();
 	}
