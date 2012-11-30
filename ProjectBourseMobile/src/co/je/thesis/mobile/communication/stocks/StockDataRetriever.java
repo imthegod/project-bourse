@@ -1,4 +1,4 @@
-package co.je.thesis.mobile.logic.stockController;
+package co.je.thesis.mobile.communication.stocks;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import co.je.thesis.mobile.communication.utils.CommunicationUtils;
 
-public class DataRetriever extends AsyncTask<String, Void, Double> {
+public class StockDataRetriever extends AsyncTask<String, Void, Double> {
 
 	private String getUriForStock(String stockSymbol) {
 
@@ -39,7 +39,7 @@ public class DataRetriever extends AsyncTask<String, Void, Double> {
 			HttpResponse httpResponse = httpClient.execute(getRequest);
 			HttpEntity httpResponseEntity = httpResponse.getEntity();
 
-			int statusCode = httpResponse.getStatusLine().getStatusCode();
+			//int statusCode = httpResponse.getStatusLine().getStatusCode();
 			result = CommunicationUtils.getEntityAsString(httpResponseEntity);
 
 		} catch (ClientProtocolException e) {

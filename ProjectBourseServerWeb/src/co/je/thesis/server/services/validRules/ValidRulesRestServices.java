@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import co.je.thesis.common.domainObjects.ValidRule;
-import co.je.thesis.server.application.ValidRulesRequestHandler;
+import co.je.thesis.server.application.validRules.ValidRulesRequestHandler;
 
 @Path("/valid-rules")
 public class ValidRulesRestServices {

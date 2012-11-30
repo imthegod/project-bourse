@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import co.je.thesis.mobile.persistence.dbo.PortfolioDBO;
+import co.je.thesis.mobile.persistence.translators.PortfolioTranslator;
 
 public class PortfolioPersistence {
 
@@ -58,6 +59,7 @@ public class PortfolioPersistence {
 	public void createPortfolio(SQLiteDatabase db, PortfolioDBO portfolioDBO) {
 
 		ContentValues values = new ContentValues();
+		
 		values.put(NAME, portfolioDBO.getName());
 		values.put(NUMBER_OF_STOCKS, portfolioDBO.getNumberOfStocks());
 
@@ -73,9 +75,11 @@ public class PortfolioPersistence {
 
 	public PortfolioDBO readSinglePortfolio(SQLiteDatabase db, String portfolioName) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		String[] columns = null; // all columns
 		String selection = "name = ?";
-		String[] selectionArgs = { portfolioName };
+		String[] selectionArgs = { correctedPortfolioNameForDB };
 		String groupBy = null; // not grouped
 		String having = null; // all row groups to be included
 		String orderBy = null; // default sort order
@@ -131,9 +135,11 @@ public class PortfolioPersistence {
 	public void updatePortfolio(SQLiteDatabase db, String portfolioName,
 			PortfolioDBO updatedPortfolio) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		String[] columns = null; // all columns
 		String selection = NAME + " = ?";
-		String[] selectionArgs = { portfolioName };
+		String[] selectionArgs = { correctedPortfolioNameForDB };
 		String groupBy = null; // not grouped
 		String having = null; // all row groups to be included
 		String orderBy = null; // default sort order
@@ -151,7 +157,7 @@ public class PortfolioPersistence {
 			values.put(NUMBER_OF_STOCKS, updatedPortfolio.getNumberOfStocks());
 
 			String whereClause = "name = ?";
-			String[] whereArgs = { portfolioName };
+			String[] whereArgs = { correctedPortfolioNameForDB };
 
 			int rowsAffected = db.update(PORTFOLIOS, values, whereClause,
 					whereArgs);
@@ -172,8 +178,10 @@ public class PortfolioPersistence {
 
 	public void deletePortfolio(SQLiteDatabase db, String portfolioName) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		String whereClause = "name = ?";
-		String[] whereArgs = { portfolioName };
+		String[] whereArgs = { correctedPortfolioNameForDB };
 		int rowsAffected = db.delete(PORTFOLIOS, whereClause, whereArgs);
 
 		if (rowsAffected != 1) {
@@ -190,9 +198,11 @@ public class PortfolioPersistence {
 	
 	public static boolean portfolioAlreadyExists(SQLiteDatabase db, String portfolioName) {
 		
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		String[] columns = null; // all columns
 		String selection = "name = ?";
-		String[] selectionArgs = { portfolioName };
+		String[] selectionArgs = { correctedPortfolioNameForDB };
 		String groupBy = null; // not grouped
 		String having = null; // all row groups to be included
 		String orderBy = null; // default sort order
@@ -208,7 +218,7 @@ public class PortfolioPersistence {
 			cursor.moveToPosition(0);
 			String portfolioNameFromCursor = cursor.getString(0);
 			
-			if (portfolioNameFromCursor.equalsIgnoreCase(portfolioName)) {
+			if (portfolioNameFromCursor.equalsIgnoreCase(correctedPortfolioNameForDB)) {
 				
 				portfolioExists = true;
 			}

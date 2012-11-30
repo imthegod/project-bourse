@@ -38,7 +38,7 @@ import co.je.thesis.common.verifiers.RuleVerifier;
 import co.je.thesis.mobile.R;
 import co.je.thesis.mobile.communication.analysis.AnalysisServicesConsumer;
 import co.je.thesis.mobile.communication.dsl.DSLServicesConsumer;
-import co.je.thesis.mobile.communication.rules.RuleServicesConsumer;
+import co.je.thesis.mobile.communication.rules.RulesServicesConsumer;
 import co.je.thesis.mobile.logic.analysisManager.AnalysisManager;
 import co.je.thesis.mobile.presentation.UIUtils;
 import co.je.thesis.mobile.presentation.dialogs.CreateDialogActivity;
@@ -80,7 +80,7 @@ OnItemSelectedListener, TextWatcher, OnEditorActionListener, CreateDialogActivit
 		DSLServicesConsumer dslServicesConsumer = new DSLServicesConsumer();
 		dsl = dslServicesConsumer.getDSL();
 
-		RuleServicesConsumer ruleServicesConsumer = new RuleServicesConsumer();
+		RulesServicesConsumer ruleServicesConsumer = new RulesServicesConsumer();
 		validRules = ruleServicesConsumer.getValidRules();
 
 		System.out.println("CreateAnalysisActivity: validRules.size():" + validRules.size());

@@ -3,7 +3,6 @@ package co.je.thesis.mobile.presentation.portfolio;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,9 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import co.je.thesis.mobile.R;
+import co.je.thesis.mobile.communication.stocks.StockDataRetriever;
 import co.je.thesis.mobile.logic.businessObjects.Stock;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
-import co.je.thesis.mobile.logic.stockController.DataRetriever;
 import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 
@@ -95,7 +94,7 @@ public class EditStocksOutOfLimitsActivity extends Activity implements OnClickLi
 
 		double lastTradePice = -1;
 
-		DataRetriever dataRetriever = new DataRetriever();
+		StockDataRetriever dataRetriever = new StockDataRetriever();
 		try {
 
 			String[] params = { stockSymbol };

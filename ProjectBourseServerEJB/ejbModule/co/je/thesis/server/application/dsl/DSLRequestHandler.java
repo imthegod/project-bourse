@@ -1,4 +1,4 @@
-package co.je.thesis.server.application;
+package co.je.thesis.server.application.dsl;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -42,7 +42,7 @@ public class DSLRequestHandler {
     public DSLDataTransferObject getUpdatedDSL() {
     	
     	System.out.println("EJB: DSLRequestHandler: getUpdatedDSL()");
-    	DSLDataTransferObject dsl = dslManager.getUpdatedDSL();
+    	DSLDataTransferObject dsl = dslManager.getDSL();
     	return dsl;
     }
 }

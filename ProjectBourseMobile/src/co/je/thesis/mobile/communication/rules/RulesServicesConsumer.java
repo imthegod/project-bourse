@@ -10,7 +10,7 @@ import co.je.thesis.mobile.communication.constants.CommunicationsConstants;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class RuleServicesConsumer {
+public class RulesServicesConsumer {
 	
 	public static final String VALID_RULES_SERVICES_URL = "/valid-rules";
 

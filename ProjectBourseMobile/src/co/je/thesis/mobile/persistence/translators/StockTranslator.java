@@ -10,7 +10,10 @@ public class StockTranslator {
 		String symbol = stock.getSymbol();
 		String name = stock.getName();
 		int numberOfShares = stock.getNumberOfShares();
+		
 		String portfolioName = stock.getPortfolioName();
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		double basePrice = stock.getBasePrice();
 		
 		double stopLoss1 = stock.getStopLoss1();
@@ -21,7 +24,7 @@ public class StockTranslator {
 		double takeProfit2 = stock.getTakeProfit2();
 		double takeProfit3 = stock.getTakeProfit3();
 		
-		StockDBO stockDBO = new StockDBO(symbol, name, numberOfShares, portfolioName,
+		StockDBO stockDBO = new StockDBO(symbol, name, numberOfShares, correctedPortfolioNameForDB,
 				basePrice, stopLoss1, stopLoss2, stopLoss3, takeProfit1, takeProfit2,
 				takeProfit3);
 		
@@ -33,7 +36,10 @@ public class StockTranslator {
 		String symbol = stockDBO.getSymbol();
 		String name = stockDBO.getName();
 		int numberOfShares = stockDBO.getNumberOfShares();
-		String portfolioName = stockDBO.getPortfolioName();
+		
+		String correctedPortfolioName = stockDBO.getPortfolioName();
+		String portfolioName = PortfolioTranslator.getOriginalPortfolioName(correctedPortfolioName);
+		
 		double basePrice = stockDBO.getBasePrice();
 		
 		double stopLoss1 = stockDBO.getStopLoss1();

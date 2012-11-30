@@ -15,10 +15,6 @@ public class AnalysisPersistence {
 		AnalysisResultsStorageTranslator translator = new AnalysisResultsStorageTranslator();
 		AnalysisResultsStorageDBO analysisResultsStorageDBO = translator.toDBO(analysisResultsStorage);
 		DBCollection analysisResultsCollection = DBManager.getAnalysisResultsCollection();
-
-		// remove
-		System.out.println("AnalysisPersistence: saveAnalysisResults(): analysisResultsStorageDBO: " + analysisResultsStorageDBO);
-		System.out.println("AnalysisPersistence: saveAnalysisResults(): analysisResultsStorage.getResultStocks().size(): " + analysisResultsStorage.getResultStocks().size());
 		
 		analysisResultsCollection.insert(analysisResultsStorageDBO);
 	}

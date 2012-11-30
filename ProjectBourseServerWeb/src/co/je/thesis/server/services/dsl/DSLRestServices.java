@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import co.je.thesis.common.dtos.dsl.DSLDataTransferObject;
-import co.je.thesis.server.application.DSLRequestHandler;
+import co.je.thesis.server.application.dsl.DSLRequestHandler;
 
 @Path("/dsl")
 public class DSLRestServices {

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import co.je.thesis.mobile.persistence.dbo.StockDBO;
+import co.je.thesis.mobile.persistence.translators.PortfolioTranslator;
 
 public class StockPersistence {
 
@@ -37,8 +38,7 @@ public class StockPersistence {
 	// -----------------------------------------------------------------------------------
 	// Attributes
 	// -----------------------------------------------------------------------------------
-
-	// private String portfolioName;
+	
 	private String stocksTableName;
 
 	// -----------------------------------------------------------------------------------
@@ -46,9 +46,9 @@ public class StockPersistence {
 	// -----------------------------------------------------------------------------------
 
 	public StockPersistence(SQLiteDatabase db, String portfolioName) {
-
-		// this.portfolioName = portfolioName;
-		stocksTableName = STOCKS + "_" + portfolioName;
+		
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		stocksTableName = STOCKS + "_" + correctedPortfolioNameForDB;
 		createTable(db);
 	}
 
@@ -117,8 +117,10 @@ public class StockPersistence {
 	
 	public static boolean isStockIntoPortfolio(SQLiteDatabase db, String stockSymbol, String portfolioName) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		// Use this local variable, not the attribute
-		String stocksTableName = STOCKS + "_" + portfolioName;
+		String stocksTableName = STOCKS + "_" + correctedPortfolioNameForDB;
 		
 		String[] columns = null; // all columns
 		String selection = SYMBOL + " = ?";
@@ -204,9 +206,11 @@ public class StockPersistence {
 	public ArrayList<StockDBO> readPortfolioStocks(SQLiteDatabase db,
 			String portfolioNameParam) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioNameParam);
+		
 		String[] columns = null; // all columns
 		String selection = PORTFOLIO_NAME + " = ?";
-		String[] selectionArgs = { portfolioNameParam };
+		String[] selectionArgs = { correctedPortfolioNameForDB };
 		String groupBy = null; // not grouped
 		String having = null; // all row groups to be included
 		String orderBy = null; // default sort order
@@ -308,8 +312,10 @@ public class StockPersistence {
 
 	public void deletePortFolioStocks(SQLiteDatabase db, String portfolioName) {
 
+		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
+		
 		String whereClause = PORTFOLIO_NAME + " = ?";
-		String[] whereArgs = { portfolioName };
+		String[] whereArgs = { correctedPortfolioNameForDB };
 		db.delete(stocksTableName, whereClause, whereArgs);
 	}
 }

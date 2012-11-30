@@ -92,6 +92,7 @@ public class InvestorPersistence {
 		PortfolioDBO portfolioDBO = PortfolioTranslator.toDBO(portfolio);
 		portfolioPersistence.createPortfolio(liteDb, portfolioDBO);
 
+		
 		StockPersistence stockPersistence = new StockPersistence(liteDb, portfolioName);
 
 		ArrayList<Stock> portfolioStocks = portfolio.getStocks();

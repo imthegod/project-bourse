@@ -108,19 +108,10 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
 		ArrayList<Stock> outOfLimitsStocks = getOutOfLimitsStocks(context);
 
 		if (outOfLimitsStocks.size() > 0) {
-
+			
+			System.out.println("AlarmBroadcastReceiver: onReceive(): notifyUser()");
+			
 			notifyUser(context, outOfLimitsStocks);
-
-			// Bundle bundle = new Bundle();
-			//
-			// String key1 = "stocks";
-			// bundle.putSerializable(key1, outOfLimitsStocks);
-			//
-			// Intent editStocksOutOfLimitsActivityIntent = new Intent(context,
-			// EditStocksOutOfLimitsActivity.class);
-			// editStocksOutOfLimitsActivityIntent.putExtras(bundle);
-			// editStocksOutOfLimitsActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			// context.startActivity(editStocksOutOfLimitsActivityIntent);
 		}
 	}
 }

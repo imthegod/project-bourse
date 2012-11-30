@@ -18,9 +18,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import co.je.thesis.mobile.R;
+import co.je.thesis.mobile.communication.stocks.StockDataRetriever;
 import co.je.thesis.mobile.logic.businessObjects.Stock;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
-import co.je.thesis.mobile.logic.stockController.DataRetriever;
+import co.je.thesis.mobile.logic.statisticCentre.StockStatistics;
 import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 import co.je.thesis.mobile.presentation.portfolio.EditStockActivity;
@@ -62,7 +63,7 @@ public class PortfolioStatisticsActivity extends Activity implements OnClickList
 
 		double lastTradePice = -1;
 
-		DataRetriever dataRetriever = new DataRetriever();
+		StockDataRetriever dataRetriever = new StockDataRetriever();
 		try {
 
 			String[] params = { stockSymbol };
@@ -90,32 +91,6 @@ public class PortfolioStatisticsActivity extends Activity implements OnClickList
 		return formattedDouble;
 	}
 	
-	private double getStockPercentageEarnings(Stock stock) {
-		
-		String stockSymbol = stock.getSymbol();
-		double lastTradePrice = getStockLastTradePrice(stockSymbol);
-		
-		double numerator = (lastTradePrice * 100);
-		double percentgeEarnings = numerator/stock.getBasePrice();
-		
-		return percentgeEarnings;
-	}
-	
-	private double getStockNetEarnings(Stock stock) {
-		
-		String stockSymbol = stock.getSymbol();
-		double lastTradePrice = getStockLastTradePrice(stockSymbol);
-		
-		int numberOfShares = stock.getNumberOfShares();
-		
-		double baseInvestedValue = (numberOfShares * stock.getBasePrice());
-		double currentInvestedValue = (numberOfShares * lastTradePrice);
-		
-		double netEarnings = currentInvestedValue - baseInvestedValue;
-		
-		return netEarnings;
-	}
-	
 	private void initializePercentageEarningsArrayAdapter(ArrayList<Stock> portfolioStocks) {
 
 		ArrayList<String> stockPercentageEarnings = new ArrayList<String>();
@@ -123,7 +98,8 @@ public class PortfolioStatisticsActivity extends Activity implements OnClickList
 		for (int i = 0; i < portfolioStocks.size(); i++) {
 
 			Stock stock = portfolioStocks.get(i);
-			double percentageEarnings = getStockPercentageEarnings(stock);
+			double lastTradePrice = getStockLastTradePrice(stock.getSymbol());
+			double percentageEarnings = StockStatistics.getStockPercentageEarnings(stock, lastTradePrice);
 			String percentageEarningsString = getFormattedDouble(percentageEarnings);
 			stockPercentageEarnings.add(percentageEarningsString);
 			
@@ -140,7 +116,8 @@ public class PortfolioStatisticsActivity extends Activity implements OnClickList
 		for (int i = 0; i < portfolioStocks.size(); i++) {
 
 			Stock stock = portfolioStocks.get(i);
-			double netEarnings = getStockNetEarnings(stock);
+			double lastTradePrice = getStockLastTradePrice(stock.getSymbol());
+			double netEarnings = StockStatistics.getStockNetEarnings(stock, lastTradePrice);
 			String netEarningsString = getFormattedDouble(netEarnings);
 			stockNetEarnings.add(netEarningsString);
 		}

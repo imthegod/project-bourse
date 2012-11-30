@@ -10,7 +10,7 @@ import co.je.thesis.server.domain.dsl.commands.MathOpOver2PropertiesCommand;
 import co.je.thesis.server.domain.dsl.commands.NumberCommand;
 import co.je.thesis.server.domain.dsl.commands.PropertyCommand;
 import co.je.thesis.server.domain.dsl.commands.SummationCommand;
-import co.je.thesis.server.persistence.rules.RuleQueryExecutor;
+import co.je.thesis.server.persistence.analysis.CommandQueryExecutor;
 
 public class CommandExecutor {
 
@@ -64,7 +64,7 @@ public class CommandExecutor {
 
 		double answer = -1;
 
-		RuleQueryExecutor ruleQueryExecutor = new RuleQueryExecutor();
+		CommandQueryExecutor ruleQueryExecutor = new CommandQueryExecutor();
 		PropertyCommand propertyCommand = (PropertyCommand) command;
 		String property = propertyCommand.getPropertyName();
 		String timeFrame = propertyCommand.getTimeFrame();
@@ -78,7 +78,7 @@ public class CommandExecutor {
 
 		double answer = -1;
 
-		RuleQueryExecutor ruleQueryExecutor = new RuleQueryExecutor();
+		CommandQueryExecutor ruleQueryExecutor = new CommandQueryExecutor();
 		AverageCommand averageCommand = (AverageCommand) command;
 
 		String property = averageCommand.getProperty();
@@ -94,7 +94,7 @@ public class CommandExecutor {
 
 		double answer = -1;
 
-		RuleQueryExecutor ruleQueryExecutor = new RuleQueryExecutor();
+		CommandQueryExecutor ruleQueryExecutor = new CommandQueryExecutor();
 		MathOpOver2PropertiesCommand mathOpOver2PropertiesCommand = (MathOpOver2PropertiesCommand) command;
 
 		String mathOperation = mathOpOver2PropertiesCommand.getMathOperation();
@@ -112,7 +112,7 @@ public class CommandExecutor {
 
 		double answer = -1;
 
-		RuleQueryExecutor ruleQueryExecutor = new RuleQueryExecutor();
+		CommandQueryExecutor ruleQueryExecutor = new CommandQueryExecutor();
 		SummationCommand summationCommand = (SummationCommand) command;
 
 		String nestedMathOperation = summationCommand.getNestedMathOperation();
@@ -131,7 +131,7 @@ public class CommandExecutor {
 
 		double answer = -1;
 
-		RuleQueryExecutor ruleQueryExecutor = new RuleQueryExecutor();
+		CommandQueryExecutor ruleQueryExecutor = new CommandQueryExecutor();
 		CompositeCommand compositeCommand = (CompositeCommand) command;
 
 		String mathOperation = compositeCommand.getMathOperation();

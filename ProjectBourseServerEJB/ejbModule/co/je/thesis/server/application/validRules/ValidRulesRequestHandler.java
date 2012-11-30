@@ -1,4 +1,4 @@
-package co.je.thesis.server.application;
+package co.je.thesis.server.application.validRules;
 
 import java.util.ArrayList;
 

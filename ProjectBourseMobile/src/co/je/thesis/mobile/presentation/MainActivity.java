@@ -51,13 +51,9 @@ public class MainActivity extends Activity implements OnClickListener, CreateDia
 
 			System.out.println("hasInternetConnection()");
 			
-			if (isServerAlive()) {
-				
-				System.out.println("isServerAlive()");
-
-				setAlarm();
-
-			} else {
+			setAlarm();
+			
+			if (!isServerAlive()) {
 
 				setUIForNoInternetConnectionOrServerDown();
 			}
@@ -93,15 +89,14 @@ public class MainActivity extends Activity implements OnClickListener, CreateDia
 				PendingIntent.FLAG_CANCEL_CURRENT);
 
 		int oneSecond = 1000;
-		int numberOfminutes = (oneSecond * 60);
+		int oneMinute = (oneSecond * 60);
+		int oneHour = oneMinute * 60;
 
 		int alarmType = AlarmManager.ELAPSED_REALTIME;
-		double minutes = 2.5;
-		long timeToGoOff = (long) (numberOfminutes * minutes);
-		long intervalRepetitions = 0;
+		long timeToGoOff = (oneSecond * 75);
+		long intervalRepetitions = (timeToGoOff + 5000);
 
-		alarmManager
-				.setInexactRepeating(alarmType, timeToGoOff, intervalRepetitions, pendingIntent);
+		alarmManager.setInexactRepeating(alarmType, timeToGoOff, intervalRepetitions, pendingIntent);
 	}
 
 	private boolean hasInternetConnection() {
@@ -140,6 +135,7 @@ public class MainActivity extends Activity implements OnClickListener, CreateDia
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}

@@ -1,4 +1,4 @@
-package co.je.thesis.server.persistence.rules;
+package co.je.thesis.server.persistence.analysis;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,9 +19,9 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
-public class RuleQueryExecutor {
+public class CommandQueryExecutor {
 
-	public RuleQueryExecutor() {
+	public CommandQueryExecutor() {
 	}
 
 	private DBCollection getStockCollection(String stockSymbol) {

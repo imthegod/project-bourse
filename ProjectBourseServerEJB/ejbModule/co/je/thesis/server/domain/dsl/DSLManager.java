@@ -37,7 +37,7 @@ public class DSLManager {
 		return dslVersion;
 	}
 
-	public DSLDataTransferObject getUpdatedDSL() {
+	public DSLDataTransferObject getDSL() {
 
 		DSLDataTransferObject dsl = dslPersistence.getDSL();
 		return dsl;

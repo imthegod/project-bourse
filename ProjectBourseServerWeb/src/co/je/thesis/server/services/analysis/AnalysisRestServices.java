@@ -1,5 +1,8 @@
 package co.je.thesis.server.services.analysis;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -42,13 +45,17 @@ public class AnalysisRestServices {
 			String ownerUserName = analysisDTO.getOwnerUserName();
 			String uuid = analysisDTO.getUuid();
 			
+			ExecutorService executorService = Executors.newSingleThreadExecutor();
+			
 			if (isValidString(ownerUserName) && isValidString(uuid)) {
 				
 				AsyncAnalysisRequestHandler asyncAnalysisRequestHandler = new AsyncAnalysisRequestHandler(analysisDTO);
-				asyncAnalysisRequestHandler.start();
+				executorService.execute(asyncAnalysisRequestHandler);
 				
 				response = Response.status(202).build();
 			}
+			
+			executorService.shutdown();
 		}
 		
 		return response;

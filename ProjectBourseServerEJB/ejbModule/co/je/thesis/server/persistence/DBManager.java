@@ -32,7 +32,12 @@ public class DBManager {
 		if (mongoInstance == null) {
 
 			try {
-
+				
+//				MongoOptions mongoOptions = new MongoOptions();
+//				mongoOptions.setConnectionsPerHost(100);
+//				mongoOptions.setThreadsAllowedToBlockForConnectionMultiplier(100);
+//				mongoInstance = new Mongo("localhost", mongoOptions);
+				
 				mongoInstance = new Mongo();
 
 			} catch (UnknownHostException e) {

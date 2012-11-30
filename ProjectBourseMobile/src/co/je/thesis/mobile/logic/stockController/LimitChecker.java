@@ -3,6 +3,7 @@ package co.je.thesis.mobile.logic.stockController;
 import java.util.concurrent.ExecutionException;
 
 import android.content.Context;
+import co.je.thesis.mobile.communication.stocks.StockDataRetriever;
 import co.je.thesis.mobile.logic.businessObjects.Stock;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 
@@ -19,12 +20,14 @@ public class LimitChecker {
 
 		double lastTradePice = -1;
 
-		DataRetriever dataRetriever = new DataRetriever();
+		StockDataRetriever dataRetriever = new StockDataRetriever();
 		try {
 
 			String[] params = { stockSymbol };
 			dataRetriever.execute(params);
 			lastTradePice = dataRetriever.get();
+			
+			System.out.println("LimitChecker: lastTradePrice: " + stockSymbol + ", " + lastTradePice);
 
 		} catch (InterruptedException e) {
 
