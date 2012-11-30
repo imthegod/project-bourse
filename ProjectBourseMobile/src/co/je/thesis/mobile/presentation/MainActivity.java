@@ -55,16 +55,16 @@ public class MainActivity extends Activity implements OnClickListener, ICreateDi
 			
 			if (!isServerAlive()) {
 
-				setUIForNoInternetConnectionOrServerDown();
+				setUIForServerDown();
 			}
 
 		} else {
 			
-			setUIForNoInternetConnectionOrServerDown();
+			setUIForNoInternetConnection();
 		}
 	}
 
-	private void setUIForNoInternetConnectionOrServerDown() {
+	private void setUIForNoInternetConnection() {
 		
 		// If doesn't have Internet access, or the server is down. we can not send
 		// new analysis requests or view updated statistics
@@ -73,6 +73,14 @@ public class MainActivity extends Activity implements OnClickListener, ICreateDi
 		btnStatistics.setEnabled(false);
 		
 		String dialogMessage = "Analysis and Statistics are not available because the device does not have internet access";
+		UIUtils.showAlertDialog(this, dialogMessage);
+	}
+	
+	private void setUIForServerDown() {
+		
+		btnAnalysis.setEnabled(false);
+		
+		String dialogMessage = "Analysis is not available because the server is down";
 		UIUtils.showAlertDialog(this, dialogMessage);
 	}
 
