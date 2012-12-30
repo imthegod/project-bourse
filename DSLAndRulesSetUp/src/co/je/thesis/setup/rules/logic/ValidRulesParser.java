@@ -11,6 +11,12 @@ import jxl.read.biff.BiffException;
 import co.je.thesis.common.dbos.dsl.DSLElementDBO;
 import co.je.thesis.common.dbos.rules.RuleDBO;
 
+/**
+ * Class who knows how to translate the valid rules information stored within the files, to actual
+ * system objects.
+ * 
+ * @author Julian Espinel
+ */
 public class ValidRulesParser {
 	
 	/**

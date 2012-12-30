@@ -5,10 +5,23 @@ import java.util.ArrayList;
 import co.je.thesis.common.domainObjects.ValidRule;
 import co.je.thesis.common.dtos.rules.RuleDTO;
 
+/**
+ * This class contains the logic necessary to determine if a rule is valid or not.
+ * 
+ * @author Julian Espinel
+ */
 public class RuleVerifier {
 
+	/**
+	 * The system's valid rules.
+	 */
 	private ArrayList<ValidRule> validRules;
 
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param validRules the system's valid rules.
+	 */
 	public RuleVerifier(ArrayList<ValidRule> validRules) {
 		this.validRules = validRules;
 	}
@@ -16,7 +29,12 @@ public class RuleVerifier {
 	public ArrayList<ValidRule> getValidRules() {
 		return validRules;
 	}
-
+	
+	/**
+	 * Adds a valid rule to the validRules ArrayList.
+	 * 
+	 * @param validRule a new valid rule.
+	 */
 	public void addValidRule(ValidRule validRule) {
 
 		validRules.add(validRule);
@@ -41,6 +59,13 @@ public class RuleVerifier {
 		return isValid;
 	}
 
+	/**
+	 * Determines if a category is present into a given ArrayList of categories.
+	 * 
+	 * @param categories the categories ArrayList.
+	 * @param cateogry the category we want to know is into the ArrayList or not.
+	 * @return if the category is into the given ArrayList then return true, else returns false.
+	 */
 	private boolean isThisCategoryIntoTheArray(ArrayList<String> categories, String cateogry) {
 
 		boolean foundRepeatedCategory = false;
@@ -58,8 +83,7 @@ public class RuleVerifier {
 	 * Given a rule, it analyzes it and returns a list of the possible DSL
 	 * elements categories to make this rule a valid one.
 	 * 
-	 * @param rule
-	 *            , a rule that it is not finished.
+	 * @param rule a rule that it is not finished.
 	 * @return a list with the next possible categories values to complete the
 	 *         rule, and make it a valid one.
 	 */

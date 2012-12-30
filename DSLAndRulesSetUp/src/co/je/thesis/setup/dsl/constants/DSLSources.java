@@ -1,5 +1,10 @@
 package co.je.thesis.setup.dsl.constants;
 
+/**
+ * Class that stores the names of the Excel files that stores the DSL.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLSources {
 	
 	// File names

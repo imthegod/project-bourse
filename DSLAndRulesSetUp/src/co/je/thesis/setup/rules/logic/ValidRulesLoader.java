@@ -2,6 +2,11 @@ package co.je.thesis.setup.rules.logic;
 
 import java.io.File;
 
+/**
+ * Class who knows how to load the files that contains the valid rules information.
+ * 
+ * @author Julian Espinel
+ */
 public class ValidRulesLoader {
 	
 	/**

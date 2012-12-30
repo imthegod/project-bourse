@@ -19,18 +19,34 @@ public class BaseStockDBO extends BasicDBObject {
 	public BaseStockDBO() {
 	}
 	
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param symbol the stock symbol.
+	 * @param name the stock name.
+	 */
 	public BaseStockDBO (String symbol, String name) {
 
 		put(SYMBOL, symbol);
 		put(NAME, name);
 	}
 
+	/**
+	 * Returns the stock symbol.
+	 * 
+	 * @return the stock symbol.
+	 */
 	public String getSymbol() {
 
 		String symbol = getString(SYMBOL);
 		return symbol;
 	}
 
+	/**
+	 * Returns the stock name.
+	 * 
+	 * @return the stock name.
+	 */
 	public String getName() {
 
 		String name = getString(NAME);

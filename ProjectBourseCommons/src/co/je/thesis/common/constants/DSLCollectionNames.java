@@ -1,10 +1,16 @@
 package co.je.thesis.common.constants;
 
+/**
+ * Class that stores the DSL collection names
+ * 
+ * @author Julian Espinel
+ */
 public class DSLCollectionNames {
 
 	// Collection names
 
 	public static final String VERSION_COLLECTION_NAME = "dsl_version";
+	
 	public static final String SUBJECTS_COLLECTION_NAME = "dsl_subjects";
 	public static final String PROPERTIES_COLLECTION_NAME = "dsl_properties";
 	public static final String MATH_OPERATIONS_COLLECTION_NAME = "dsl_math_operations";

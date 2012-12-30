@@ -2,9 +2,21 @@ package co.je.thesis.common.dtos.dsl;
 
 import java.io.Serializable;
 
+/**
+ * This class models a Data transfer object of a DSL element.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLElementDTO implements Serializable {
 
+	/**
+	 * The category of this DSL element.
+	 */
 	private String category;
+	
+	/**
+	 * The value stored by this DSL element.
+	 */
 	private String value;
 
 	/*
@@ -13,6 +25,12 @@ public class DSLElementDTO implements Serializable {
 	public DSLElementDTO() {
 	}
 	
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param category the category of this DSL element.
+	 * @param value the value stored by this DSL element.
+	 */
 	public DSLElementDTO(String category, String value) {
 		this.category = category;
 		this.value = value;
@@ -26,6 +44,13 @@ public class DSLElementDTO implements Serializable {
 		return value;
 	}
 
+	/**
+	 * Verifies if a given DSL element belongs to the same category.
+	 * 
+	 * @param dslElement the given DSL element.
+	 * @return if the category of the given DSL element and the category of this DSL element are equal,
+	 * 		   then returns true, else returns false.
+	 */
 	public boolean belongToTheSameCategory(DSLElementDTO dslElement) {
 
 		boolean answer = false;

@@ -1,5 +1,10 @@
 package co.je.thesis.common.constants;
 
+/**
+ * Class that contains the DSL categories constants.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLCategories {
 	
 	public static final String SUBJECT = "subject";

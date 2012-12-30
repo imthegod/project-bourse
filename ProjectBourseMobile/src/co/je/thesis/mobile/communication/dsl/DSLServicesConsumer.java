@@ -7,10 +7,24 @@ import com.google.gson.Gson;
 import co.je.thesis.common.dtos.dsl.DSLDataTransferObject;
 import co.je.thesis.mobile.communication.constants.CommunicationsConstants;
 
+/**
+ * This class contains the logic necessary to consume the DSL REST services, 
+ * exposed by the server.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLServicesConsumer {
 
+	/**
+	 * Path that points to the DSL services.
+	 */
 	public static final String DSL_SERVICES_URL = "/dsl";
 
+	/**
+	 * Retrieves an object that represents the whole DSL.
+	 * 
+	 * @return a DSLDataTransferObject.
+	 */
 	public DSLDataTransferObject getDSL() {
 
 		String url = CommunicationsConstants.BASE_URL + DSL_SERVICES_URL;
@@ -42,6 +56,11 @@ public class DSLServicesConsumer {
 		return dsl;
 	}
 
+	/**
+	 * Returns the current DSL version.
+	 * 
+	 * @return the current DSL version.
+	 */
 	public int getDSLVersion() {
 		
 		String url = CommunicationsConstants.BASE_URL + DSL_SERVICES_URL + "/version";

@@ -10,6 +10,12 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import co.je.thesis.common.dbos.dsl.DSLElementDBO;
 
+/**
+ * Class that parses the information contained within the Excel files, and creates DSLElement objects 
+ * with it.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLElementsParser {
 	
 	/**

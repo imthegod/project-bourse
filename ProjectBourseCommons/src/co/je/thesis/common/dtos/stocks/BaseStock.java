@@ -45,6 +45,13 @@ public class BaseStock implements Comparable<BaseStock> {
 		return name;
 	}
 	
+	/**
+	 * Overwritten compateTo method.
+	 * 
+	 * @param baseStock a BaseStock object to be compared with this.
+	 * @return if the baseStock symbol and name, are equals to this stock symbol and name, then
+	 * 		   returns true, else returns false.
+	 */
 	@Override
 	public int compareTo(BaseStock baseStock) {
 

@@ -10,16 +10,35 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.Mongo;
 
+/**
+ * Class that knows how to connect to the DB.
+ * 
+ * @author Julian Espinel
+ */
 public class DBManager {
 	
 public static final String DB_NAME = "project_bourse_db";
 	
+	/**
+	 * Attribute that represents the DB connection.
+	 */
 	private static Mongo mongoConnection;
+	
+	/**
+	 * Attribute that represents the system's DB.
+	 */
 	private static DB projectBourseDB;
 	
+	/**
+	 * Constructor
+	 */
 	private DBManager() {
 	}
 	
+	/**
+	 * This method guarantees that the connection to the DB, and the attribute that
+	 * represents the system's DB are both singleton.
+	 */
 	private static void initializeDBInstance() {
 		
 		if (projectBourseDB == null) {
@@ -36,6 +55,11 @@ public static final String DB_NAME = "project_bourse_db";
 		}
 	}
 	
+	/**
+	 * Returns the current valid rules version collection.
+	 * 
+	 * @return current valid rules version collection.
+	 */
 	public static DBCollection getValidRulesVersionCollection() {
 		
 		initializeDBInstance();
@@ -46,6 +70,12 @@ public static final String DB_NAME = "project_bourse_db";
 		return dslVersionCollection;
 	}
 	
+	/**
+	 * Returns a collection given its name.
+	 * 
+	 * @param collectionName the name of the collection we want to return.
+	 * @return the collection with the given name.
+	 */
 	public static DBCollection getDBCollection(String collectionName) {
 		
 		initializeDBInstance();

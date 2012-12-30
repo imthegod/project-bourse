@@ -10,10 +10,26 @@ import co.je.thesis.setup.dsl.logic.DSLElementsLoader;
 import co.je.thesis.setup.dsl.logic.DSLElementsParser;
 import co.je.thesis.setup.dsl.persistence.DSLPersistence;
 
+/**
+ * This class executes all the logic needed to load the DSL into the system.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLMain {
 	
+	/**
+	 * Attribute that knows how to load the files which contains the DSL information.
+	 */
 	private DSLElementsLoader dslElementsLoader;
+	
+	/**
+	 * Attribute that knows how to parse the information stored in files, to actual DSL elements.
+	 */
 	private DSLElementsParser dslElementsParser;
+	
+	/**
+	 * Attribute that knows how to persist the DSL data into the system's DB.
+	 */
 	private DSLPersistence dslPersistence;
 	
 	public DSLMain() {
@@ -23,11 +39,20 @@ public class DSLMain {
 		dslPersistence = new DSLPersistence();
 	}
 	
+	/**
+	 * Updates the DSL version.
+	 */
 	public void updateDSLVersion() {
 		
 		dslPersistence.updateDSLVersion();
 	}
 	
+	/**
+	 * Inserts the DSL elements of contained in a file to a DB collection.
+	 * 
+	 * @param dslFileName the name of the file which contains the DSL elements to insert.
+	 * @param dslCollectionName the name of the collection in which the DSL elements will be inserted.
+	 */
 	public void createDSLElements(String dslFileName, String dslCollectionName) {
 		
 		dslPersistence.dropCollection(dslCollectionName);

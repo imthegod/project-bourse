@@ -2,6 +2,11 @@ package co.je.thesis.setup.dsl.logic;
 
 import java.io.File;
 
+/**
+ * Class which knows how to load the DSL into the system.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLElementsLoader {
 	
 	/**

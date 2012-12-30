@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import co.je.thesis.common.dtos.stocks.BaseStock;
 
+/**
+ * This class works as a structure to store a result generated after process an analysys request.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisResultsStorageDTO {
 	
 	/**
-	 * The user name of the person who creates the analysis.
+	 * The user name of the investor who creates the analysis.
 	 */
 	private String ownerUserName;
 
@@ -16,8 +21,19 @@ public class AnalysisResultsStorageDTO {
 	 */
 	private String uuid;
 
+	/**
+	 * The stocks that fulfill all the rules described by the investor through the analysis request.
+	 * The results generated after the analysis request has been processed.
+	 */
 	private ArrayList<BaseStock> resultStocks;
 
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param ownerUserName the user name of the investor who creates the analysis.
+	 * @param uuid the universal unique identifier of the analysis request
+	 * @param resultStocks the results generated after the analysis request has been processed.
+	 */
 	public AnalysisResultsStorageDTO(String ownerUserName, String uuid,
 			ArrayList<BaseStock> resultStocks) {
 

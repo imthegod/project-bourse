@@ -4,8 +4,16 @@ import java.util.ArrayList;
 
 import co.je.thesis.common.constants.DSLCategories;
 
+/**
+ * This class models the DSL.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLDataTransferObject {
 
+	/**
+	 * The DSL current version.
+	 */
 	private int version;
 
 	/**
@@ -19,6 +27,18 @@ public class DSLDataTransferObject {
 	private ArrayList<DSLElementDTO> logicalOperators;
 	private ArrayList<DSLElementDTO> units;
 
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param version the current version of the DSL.
+	 * @param subjects an ArrayList with the DSL elements that belong to the subjects category.
+	 * @param properties an ArrayList with the DSL elements that belong to the properties category.
+	 * @param mathOperations an ArrayList with the DSL elements that belong to the mathOperations category.
+	 * @param specificMathOperations an ArrayList with the DSL elements that belong to the specificMathOperations category.
+	 * @param conditionalOperators an ArrayList with the DSL elements that belong to the conditionalOperators category.
+	 * @param logicalOperators an ArrayList with the DSL elements that belong to the logicalOperators category.
+	 * @param units an ArrayList with the DSL elements that belong to the units category.
+	 */
 	public DSLDataTransferObject(int version, ArrayList<DSLElementDTO> subjects,
 			ArrayList<DSLElementDTO> properties, ArrayList<DSLElementDTO> mathOperations,
 			ArrayList<DSLElementDTO> specificMathOperations,
@@ -67,6 +87,12 @@ public class DSLDataTransferObject {
 		return units;
 	}
 	
+	/**
+	 * Returns a DSLElementDTO object given it value.
+	 * 
+	 * @param value the value stored by the object we want to find. 
+	 * @return The DSLElementDTO that stores the given value.
+	 */
 	public DSLElementDTO getDSLElementFromStringValue(String value) {
 		
 		ArrayList<DSLElementDTO> allDSLElements = new ArrayList<DSLElementDTO>();
@@ -96,6 +122,12 @@ public class DSLDataTransferObject {
 		return answer;
 	}
 
+	/**
+	 * Returns all the values of the DSL elements given an ArrayList of DSLElementDTO objects. 
+	 * 
+	 * @param dslElements an ArrayList of DSLElementDTO objects
+	 * @return all the values of the DSL elements given an ArrayList of DSLElementDTO objects.
+	 */
 	private ArrayList<String> getCategoryValues(ArrayList<DSLElementDTO> dslElements) {
 
 		ArrayList<String> categoryValues = new ArrayList<String>();
@@ -111,6 +143,12 @@ public class DSLDataTransferObject {
 		return categoryValues;
 	}
 
+	/**
+	 * Returns all the values grouped under a given category.
+	 * 
+	 * @param category the name of the category from which we want to get its values.
+	 * @return all the values grouped under a given category.
+	 */
 	public ArrayList<String> getValuesOfAGivenCategory(String category) {
 
 		ArrayList<String> categoryValues = new ArrayList<String>();

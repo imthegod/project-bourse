@@ -13,8 +13,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.AsyncTask;
 
+/**
+ * This class knows how to send a new analysis request to the system's server.
+ * This operation is performed asynchronously.
+ * 
+ * @author Julian Espinel
+ */
 public class PostAnalysisRequestAsyncTask extends AsyncTask<String, Void, String> {
 
+	/**
+	 * Consumes the REST service exposed by the server, that allow us to send a new analysis request.
+	 * 
+	 * @param url the URL where the "send a new analysis request" service is located.
+	 * @param jsonAnalysisDTO the JSON representation of the analysis request we want to send.
+	 */
 	private void postAnalysisRequest(String url, String jsonAnalysisDTO) {
 		
 		HttpClient httpClient = new DefaultHttpClient();
@@ -42,6 +54,9 @@ public class PostAnalysisRequestAsyncTask extends AsyncTask<String, Void, String
 		}
 	}
 	
+	/**
+	 * @see http://developer.android.com/reference/android/os/AsyncTask.html#doInBackground(Params...)
+	 */
 	@Override
 	protected String doInBackground(String... params) {
 		

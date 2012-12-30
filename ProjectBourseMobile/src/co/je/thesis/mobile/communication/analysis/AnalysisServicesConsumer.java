@@ -8,10 +8,26 @@ import co.je.thesis.mobile.communication.constants.CommunicationsConstants;
 
 import com.google.gson.Gson;
 
+/**
+ * This class contains the logic necessary to consume the analysis REST services, 
+ * exposed by the server.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisServicesConsumer {
 
+	/**
+	 * Path that points to the analysis services.
+	 */
 	public static final String ANALYSIS_SERVICES_URL = "/analysis";
 	
+	/**
+	 * Retrieves the results of a specific analysis from the system's server.
+	 * 
+	 * @param ownerUserName the user name of the investor that created the analysis request.
+	 * @param uuid the id of the analysis from which we want to retrieve the results.
+	 * @return the results of the specified analysis.
+	 */
 	public AnalysisResultsStorageDTO getAnalysisResults(String ownerUserName, String uuid) {
 
 		String url = CommunicationsConstants.BASE_URL + ANALYSIS_SERVICES_URL;
@@ -42,6 +58,11 @@ public class AnalysisServicesConsumer {
 		return analysisResultsStorageDTO;
 	}
 
+	/**
+	 * Sends an analysis request created by the investor to the system's server.
+	 * 
+	 * @param analysisDTO a data transfer objects which represents the analysis request we want to send.
+	 */
 	public void sendAnalysisRequest(AnalysisDTO analysisDTO) {
 
 		String url = CommunicationsConstants.BASE_URL + ANALYSIS_SERVICES_URL;

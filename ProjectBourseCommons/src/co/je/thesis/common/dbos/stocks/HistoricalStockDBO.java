@@ -25,6 +25,16 @@ public class HistoricalStockDBO extends BasicDBObject {
 	public HistoricalStockDBO() {
 	}
 
+	/**
+	 * Constructor with parameters.
+	 * 
+	 * @param date the date when the data stored in this object were taken.
+	 * @param open the open price of the stock on this date.
+	 * @param high the highest price of the stock on this date.
+	 * @param low the lowest price of the stock on this date.
+	 * @param close the close price of the stock on this date.
+	 * @param volume the traded volume of the stock on this date.
+	 */
 	public HistoricalStockDBO(Date date, double open, double high, double low, double close, double volume) {
 
 		put(DATE, date);
@@ -52,37 +62,67 @@ public class HistoricalStockDBO extends BasicDBObject {
 
 		return queryDbo;
 	}
-
+	
+	/**
+	 * Return the date when the data stored in this object were taken.
+	 * 
+	 * @return the date when the data stored in this object were taken.
+	 */
 	public Date getDate() {
 
 		Date date = (Date) get(DATE);
 		return date;
 	}
 
+	/**
+	 * Returns the open price of the stock on this date.
+	 * 
+	 * @return the open price of the stock on this date.
+	 */
 	public double getOpen() {
 
 		double open = getDouble(OPEN);
 		return open;
 	}
 
+	/**
+	 * Returns the highest price of the stock on this date.
+	 * 
+	 * @return the highest price of the stock on this date.
+	 */
 	public double getHigh() {
 
 		double high = getDouble(HIGH);
 		return high;
 	}
 
+	/**
+	 * Returns the lowest price of the stock on this date.
+	 * 
+	 * @return the lowest price of the stock on this date.
+	 */
 	public double getLow() {
 
 		double low = getDouble(LOW);
 		return low;
 	}
 
+	/**
+	 * Returns the close price of the stock on this date.
+	 * 
+	 * @return the close price of the stock on this date.
+	 */
 	public double getClose() {
 
 		double close = getDouble(CLOSE);
 		return close;
 	}
 
+	/**
+	 * Returns the traded volume of the stock on this date.
+	 * 
+	 * @return the traded volume of the stock on this date.
+	 */
 	public double getVolume() {
 
 		double volume = getDouble(VOLUME);

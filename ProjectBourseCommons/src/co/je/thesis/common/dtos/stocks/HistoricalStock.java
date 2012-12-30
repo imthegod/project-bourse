@@ -103,6 +103,13 @@ public class HistoricalStock implements Comparable<HistoricalStock> {
 		return isDateNull;
 	}
 
+	/**
+	 * Overwritten compareTo mehod.
+	 * 
+	 * @param historicalStock a HistoricalStock object to be compared with this.
+	 * @return if all the fields of the parameter object have the same value of its counterpart field
+	 * 		   in this object, then returns true, else returns false.
+	 */
 	@Override
 	public int compareTo(HistoricalStock historicalStock) {
 

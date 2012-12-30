@@ -13,8 +13,24 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import co.je.thesis.mobile.communication.utils.CommunicationUtils;
 
+/**
+ * This class handles the logic necessary for make a GET petition to the server in order to retrieve
+ * the results of a specific analysis request. This operation executes asynchronously.
+ * 
+ * @author Julian Espinel
+ */
 public class GetAnalysisResultsAsyncTask extends AsyncTask<String, Void, String> {
 	
+	/**
+	 * Consumes the REST services exposed by the server, that allow us to retrieve the results of a
+	 * specific analysis request.
+	 * 
+	 * @param url the URL where the "retrieve the result of a specific analysis" service is located.
+	 * @param ownerUserName the user name of the investor that created the analysis request.
+	 * @param uuid the id of the analysis from which we want to retrieve the results.
+	 * @return A string which contains the JSON representation of the expected result. The expected 
+	 * 		   result is an object of the class AnalysisResultsStorageDTO.
+	 */
 	private String getAnalysisResults(String url, String ownerUserName, String uuid) {
 		
 		String userNameParam = "username";
@@ -53,6 +69,11 @@ public class GetAnalysisResultsAsyncTask extends AsyncTask<String, Void, String>
 		return result;
 	}
 
+	/**
+	 * Calls the getAnalysisResults method and returns the results of it.
+	 * 
+	 * @see http://developer.android.com/reference/android/os/AsyncTask.html#doInBackground(Params...)
+	 */
 	@Override
 	protected String doInBackground(String... params) {
 

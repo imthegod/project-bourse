@@ -8,10 +8,23 @@ import co.je.thesis.common.dtos.analysis.AnalysisDTO;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 import co.je.thesis.common.dtos.rules.RuleDTO;
 
+/**
+ * This class knows how to verify if an analysis is valid or not. 
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisVerifier {
 
+	/**
+	 * Attribute that knows how to verify the rules that compound the analysis.
+	 */
 	private RuleVerifier ruleVerifier;
 	
+	/**
+	 * Constructor with parameters. 
+	 * 
+	 * @param validRules the system's valid rules.
+	 */
 	public AnalysisVerifier(ArrayList<ValidRule> validRules) {
 		
 		this.ruleVerifier = new RuleVerifier(validRules);
