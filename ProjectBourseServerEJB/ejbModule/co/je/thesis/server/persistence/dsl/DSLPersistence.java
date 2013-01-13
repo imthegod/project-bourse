@@ -15,11 +15,24 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
+/**
+ * This class is responsible for handling the DSL data persistence.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLPersistence {
 	
+	/**
+	 * DSLPersistence constructor.
+	 */
 	public DSLPersistence() {
 	}
 
+	/**
+     * Returns the whole DSL on  its current (and last) version.
+     * 
+     * @return the whole DSL on  its current (and last) version.
+     */
 	public DSLDataTransferObject getDSL() {
 		
 		int version = getDSLVersion();
@@ -36,6 +49,14 @@ public class DSLPersistence {
 		return dsl;
 	}
 
+	/**
+	 * Gets a DBCursor object and creates an ArrayList object with the information contained
+	 * by the cursor.
+	 * 
+	 * @param cursor the DBCursor object we want to convert into an ArrayList.
+	 * @return an ArrayList object with the information contained
+	 * 		   by the cursor.
+	 */
 	private ArrayList<DSLElementDTO> convertToArrayOfDSLElements(DBCursor cursor) {
 
 		ArrayList<DSLElementDTO> dslElements = new ArrayList<DSLElementDTO>();
@@ -54,6 +75,11 @@ public class DSLPersistence {
 		return dslElements;
 	}
 	
+	/**
+     * Returns the current (and last) version number of the system's DSL.
+     * 
+     * @return the current (and last) version number of the system's DSL.
+     */
 	public int getDSLVersion() {
 		
 		DBCollection dslVersionCollection = DBManager.getDSLVersionCollection();
@@ -63,6 +89,11 @@ public class DSLPersistence {
 		return dslVersion;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category "subject".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category "subject".
+	 */
 	public ArrayList<DSLElementDTO> getDSLSubjects() {
 
 		String collectionName = DSLCollectionNames.SUBJECTS_COLLECTION_NAME;
@@ -73,6 +104,11 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category "property".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category "property".
+	 */
 	public ArrayList<DSLElementDTO> getDSLProperties() {
 
 		String collectionName = DSLCollectionNames.PROPERTIES_COLLECTION_NAME;
@@ -83,6 +119,11 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category "math_operation".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category "math_operation".
+	 */
 	public ArrayList<DSLElementDTO> getDSLMathOperations() {
 
 		String collectionName = DSLCollectionNames.MATH_OPERATIONS_COLLECTION_NAME;
@@ -93,6 +134,13 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category 
+	 * "specific_math_operation".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category 
+	 * 		   "specific_math_operation".
+	 */
 	public ArrayList<DSLElementDTO> getDSLSpecificMathOperations() {
 
 		String collectionName = DSLCollectionNames.SPECIFIC_MATH_OPERATIONS_COLLECTION_NAME;
@@ -103,6 +151,13 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category 
+	 * "conditional_operator".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category 
+	 * 		   "conditional_operator".
+	 */
 	public ArrayList<DSLElementDTO> getDSLConditionalOperators() {
 
 		String collectionName = DSLCollectionNames.CONDITIONAL_OPERATORS_COLLECTION_NAME;
@@ -113,6 +168,13 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category 
+	 * "logical_operator".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category 
+	 * 		   "logical_operator".
+	 */
 	public ArrayList<DSLElementDTO> getDSLLogicalOperators() {
 
 		String collectionName = DSLCollectionNames.LOGICAL_OPERATORS_COLLECTION_NAME;
@@ -123,6 +185,11 @@ public class DSLPersistence {
 		return dslProperties;
 	}
 	
+	/**
+	 * Returns an ArrayList which contains the DSL elements that belong to the category "unit".
+	 * 
+	 * @return an ArrayList which contains the DSL elements that belong to the category "unit".
+	 */
 	public ArrayList<DSLElementDTO> getDSLUnits() {
 
 		String collectionName = DSLCollectionNames.UNITS_COLLECTION_NAME;

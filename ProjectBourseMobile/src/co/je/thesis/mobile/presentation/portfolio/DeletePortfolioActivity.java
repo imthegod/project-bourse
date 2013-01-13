@@ -21,6 +21,12 @@ import co.je.thesis.mobile.logic.businessObjects.Portfolio;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Delete a portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class DeletePortfolioActivity extends Activity {
 
 	public static final String TAG = "DeletePortfolioActivity";

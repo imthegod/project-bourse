@@ -11,8 +11,19 @@ import co.je.thesis.common.domainObjects.ValidRule;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 import co.je.thesis.common.dtos.rules.RuleDTO;
 
+/**
+ * This class translates RuleDTO objects into RuleDBO objects.
+ * 
+ * @author Julian Espinel
+ */
 public class RuleTranslator {
 
+	/**
+	 * Translates BasicDBObject to RuleDBO objects.
+	 * 
+	 * @param basicDBO the object we want to translate.
+	 * @return a RuleDBO object with the information contained by the BasicDBObject.
+	 */
 	public RuleDBO toDBO(BasicDBObject basicDBO) {
 
 		BasicDBList basicElementsDBO = (BasicDBList) basicDBO.get(RuleDBO.ELEMENTS_DBO);
@@ -31,6 +42,12 @@ public class RuleTranslator {
 		return ruleDBO;
 	}
 
+	/**
+	 * Translates RuleDTO objects to RuleDBO objects.
+	 * 
+	 * @param ruleDTO the object we want to translate.
+	 * @return a RuleDBO object with the information contained by the RuleDTO object.
+	 */
 	public RuleDBO toDBO(RuleDTO ruleDTO) {
 
 		ArrayList<DSLElementDTO> elementsDTO = ruleDTO.getElements();
@@ -51,6 +68,12 @@ public class RuleTranslator {
 		return ruleDBO;
 	}
 
+	/**
+	 * Translates RuleDBO objects to RuleDTO objects.
+	 * 
+	 * @param ruleDBO the object we want to translate.
+	 * @return a RuleDTO object with the information contained by the RuleDBO object.
+	 */
 	public RuleDTO toDTO(RuleDBO ruleDBO) {
 
 		BasicDBList basicElementsDBO = ruleDBO.getBasicElementsDBO();
@@ -72,6 +95,12 @@ public class RuleTranslator {
 		return ruleDTO;
 	}
 
+	/**
+	 * Translates a RuleDBO object into a ValidRule object.
+	 * 
+	 * @param ruleDBO the object we want to translate.
+	 * @return a ValidRule object with the information contained by the RuleDBO object.
+	 */
 	public ValidRule toDomainObject(RuleDBO ruleDBO) {
 
 		BasicDBList basicElementsDBO = ruleDBO.getBasicElementsDBO();

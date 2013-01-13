@@ -10,41 +10,104 @@ import android.util.Log;
 import co.je.thesis.mobile.persistence.dbo.StockDBO;
 import co.je.thesis.mobile.persistence.translators.PortfolioTranslator;
 
+/**
+ * This class is responsible for the persistence of the stocks that belong to a specific
+ * portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class StockPersistence {
 
 	// -----------------------------------------------------------------------------------
 	// Constants
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * Constant to model the stocks table name.
+	 */
 	public static final String STOCKS = "stocks";
+	
+	/**
+	 * Constant for logging purposes.
+	 */
 	public static final String TAG = "StockPersistence";
 
 	// Table fields
 
+	/**
+	 * Table column named "symbol".
+	 */
 	public static final String SYMBOL = "symbol";
+	
+	/**
+	 * Table column named "name".
+	 */
 	public static final String NAME = "name";
+	
+	/**
+	 * Table column named "number_of_shares".
+	 */
 	public static final String NUMBER_OF_SHARES = "number_of_shares";
+	
+	/**
+	 * Table column named "portfolio_name".
+	 */
 	public static final String PORTFOLIO_NAME = "portfolio_name";
+	
+	/**
+	 * Table column named "base_price".
+	 */
 	public static final String BASE_PRICE = "base_price";
 
+	/**
+	 * Table column named "stop_loss_1".
+	 */
 	public static final String STOP_LOSS_1 = "stop_loss_1";
+	
+	/**
+	 * Table column named "stop_loss_2".
+	 */
 	public static final String STOP_LOSS_2 = "stop_loss_2";
+	
+	/**
+	 * Table column named "stop_loss_3".
+	 */
 	public static final String STOP_LOSS_3 = "stop_loss_3";
 
+	/**
+	 * Table column named "take_profit_1".
+	 */
 	public static final String TAKE_PROFIT_1 = "take_profit_1";
+	
+	/**
+	 * Table column named "take_profit_2".
+	 */
 	public static final String TAKE_PROFIT_2 = "take_profit_2";
+	
+	/**
+	 * Table column named "take_profit_3".
+	 */
 	public static final String TAKE_PROFIT_3 = "take_profit_3";
 
 	// -----------------------------------------------------------------------------------
 	// Attributes
 	// -----------------------------------------------------------------------------------
 	
+	/**
+	 * Attribute that stores the stock table name.
+	 */
 	private String stocksTableName;
 
 	// -----------------------------------------------------------------------------------
 	// Methods
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * StockPersistence constructor.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio that contains the stocks.
+	 */
 	public StockPersistence(SQLiteDatabase db, String portfolioName) {
 		
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
@@ -52,12 +115,22 @@ public class StockPersistence {
 		createTable(db);
 	}
 
+	/**
+	 * Creates a table into the DB in order to store the stocks of a specific portfolio.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 */
 	private void createTable(SQLiteDatabase db) {
 
 		String createQuery = getCreateStocksTableQuery();
 		db.execSQL(createQuery);
 	}
 
+	/**
+	 * Returns the query to create a table to store the stocks of a specific portfolio.
+	 * 
+	 * @return the query to create a table to store the stocks of a specific portfolio.
+	 */
 	private String getCreateStocksTableQuery() {
 
 		String createStocksTableQuery = "create table if not exists " + stocksTableName
@@ -78,6 +151,12 @@ public class StockPersistence {
 	// Stock CRUD
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * Creates a stock into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stockDBO the stock to insert into the DB.
+	 */
 	public void createSingleStock(SQLiteDatabase db, StockDBO stockDBO) {
 
 		ContentValues values = new ContentValues();
@@ -106,6 +185,12 @@ public class StockPersistence {
 		}
 	}
 
+	/**
+	 * Inserts multiple stocks into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stocksDBO an ArrayList that contains the stocks to insert into the DB.
+	 */
 	public void createMultipleStocks(SQLiteDatabase db, ArrayList<StockDBO> stocksDBO) {
 
 		for (int i = 0; i < stocksDBO.size(); i++) {
@@ -115,6 +200,14 @@ public class StockPersistence {
 		}
 	}
 	
+	/**
+	 * Determines if a stock already belongs to a specific portfolio. 
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stockSymbol the symbol of the stock we are looking for.
+	 * @param portfolioName the name of the portfolio that we want to know if contains the stock.
+	 * @return if a stock already belongs to a specific portfolio, then returns true, else returns false.
+	 */
 	public static boolean isStockIntoPortfolio(SQLiteDatabase db, String stockSymbol, String portfolioName) {
 
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
@@ -152,6 +245,13 @@ public class StockPersistence {
 		return answer;
 	}
 
+	/**
+	 * Retrieves a stock from the DB given its symbol.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stockSymbol the symbol of the stock we want to retrieve from the DB.
+	 * @return a stock from the DB given its symbol.
+	 */
 	public StockDBO readSingleStock(SQLiteDatabase db, String stockSymbol) {
 
 		String[] columns = null; // all columns
@@ -203,6 +303,13 @@ public class StockPersistence {
 		return foundStock;
 	}
 
+	/**
+	 * Returns an ArrayList that contains all the stocks of a specific portfolio.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioNameParam the name of the portfolio from which we want to retrieve its stocks.
+	 * @return an ArrayList that contains all the stocks of a specific portfolio.
+	 */
 	public ArrayList<StockDBO> readPortfolioStocks(SQLiteDatabase db,
 			String portfolioNameParam) {
 
@@ -249,6 +356,13 @@ public class StockPersistence {
 		return portfolioStocksDBO;
 	}
 
+	/**
+	 * Updates a stock that belong to a specific portfolio.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stockSymbol the symbol of the stock we want to update.
+	 * @param updatedStock the object that contains the updated information of the stock.
+	 */
 	public void updateStock(SQLiteDatabase db, String stockSymbol, StockDBO updatedStock) {
 
 		String[] columns = null; // all columns
@@ -297,6 +411,12 @@ public class StockPersistence {
 		}
 	}
 
+	/**
+	 * Deletes a stock given its symbol.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param stockSymbol the symbol of the stock we want to delete.
+	 */
 	public void deleteSingleStock(SQLiteDatabase db, String stockSymbol) {
 
 		String whereClause = SYMBOL + " = ?";
@@ -310,6 +430,12 @@ public class StockPersistence {
 		}
 	}
 
+	/**
+	 * Deletes all the stocks of a given portfolio.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio from which we want to delete all its stocks.
+	 */
 	public void deletePortFolioStocks(SQLiteDatabase db, String portfolioName) {
 
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);

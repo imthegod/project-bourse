@@ -5,8 +5,16 @@ import java.util.ArrayList;
 import co.je.thesis.common.constants.DSLCategories;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 
+/**
+ * This class models a composite command.
+ * 
+ * @author Julian Espinel
+ */
 public class CompositeCommand implements ICommand {
 
+	/**
+	 * This constant stores the command name.
+	 */
 	public static final String COMMAND_NAME = "COMPOSITE_COMMAND";
 	
 	/**
@@ -22,6 +30,11 @@ public class CompositeCommand implements ICommand {
 	public CompositeCommand() {
 	}
 	
+	/**
+	 * CompositeCommand constructor.
+	 * 
+	 * @param mathOperation the math operation of the composite command.
+	 */
 	public CompositeCommand(String mathOperation) {
 
 		this.mathOperation = mathOperation;
@@ -54,6 +67,13 @@ public class CompositeCommand implements ICommand {
 		return COMMAND_NAME;
 	}
 	
+	/**
+	 * Determines if a DSL element is valid or not.
+	 * 
+	 * @param dslElementDTO the DSL element.
+	 * @return id the DSL element is not empty and is not null, then returns true, 
+	 * 		   else returns false.
+	 */
 	private static boolean elementValueIsValid(DSLElementDTO dslElementDTO) {
 
 		boolean valueIsNotEmpty = !(dslElementDTO.getValue().isEmpty());
@@ -63,6 +83,14 @@ public class CompositeCommand implements ICommand {
 		return answer;
 	}
 	
+	/**
+	 * Given an ArrayList of DSL elements, this method determines if all the elements of the 
+	 * ArrayList correspond to this command and are in the correct order.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return if all the elements of the ArrayList correspond to this command and are in the 
+	 * 		   correct order, then returns true, else returns false.
+	 */
 	public static boolean dslElementsCorrespondToThisCommand(ArrayList<DSLElementDTO> elementsArray) {
 		
 		boolean elementsCorrespondToThisCommand = false;
@@ -131,6 +159,12 @@ public class CompositeCommand implements ICommand {
 		return elementsCorrespondToThisCommand;
 	}
 	
+	/**
+	 * Builds a CompositeCommand with the DSL elements contained into the ArrayList.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return a CompositeCommand with the DSL elements contained into the ArrayList.
+	 */
 	public static ICommand buildCommand(ArrayList<DSLElementDTO> elementsArray) {
 
 		int i = 0;

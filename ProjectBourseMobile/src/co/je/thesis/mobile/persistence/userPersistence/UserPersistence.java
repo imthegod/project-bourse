@@ -8,16 +8,44 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import co.je.thesis.mobile.persistence.DatabaseOpenHelper;
 
+/**
+ * This class is responsible for handling the user data persistence.
+ * 
+ * @author Julian Espinel
+ */
 public class UserPersistence {
 
+	/**
+	 * Constant for logging purposes.
+	 */
 	public static final String TAG = "UserPersistence";
 
+	/**
+	 * Constant to model the users table name.
+	 */
 	public static final String USERS = "users";
+	
+	/**
+	 * Table column named "user_name"
+	 */
 	public static final String USER_NAME = "user_name";
 
+	/**
+	 * Attribute that allow us to connect to the SQLiteDB.
+	 */
 	private DatabaseOpenHelper dbOpenHelper;
+	
+	/**
+	 * Attribute that exposes methods to manage a SQLite database.
+	 */
 	private SQLiteDatabase liteDb;
 
+	/**
+	 * UserPersistence constructor.
+	 * 
+	 * @param context the Android App context.
+	 * @see http://developer.android.com/reference/android/content/Context.html
+	 */
 	public UserPersistence(Context context) {
 
 		dbOpenHelper = new DatabaseOpenHelper(context);
@@ -26,12 +54,22 @@ public class UserPersistence {
 		createTable(liteDb);
 	}
 
+	/**
+	 * Creates the users table into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 */
 	private void createTable(SQLiteDatabase db) {
 
 		String createQuery = getCreateUserTableQuery();
 		db.execSQL(createQuery);
 	}
 
+	/**
+	 * Returns the query needed to create the users table into the DB.
+	 * 
+	 * @return the query needed to create the users table into the DB.
+	 */
 	private String getCreateUserTableQuery() {
 
 		String createUserTableQuery = "create table if not exists " + USERS + " (" + USER_NAME
@@ -63,6 +101,11 @@ public class UserPersistence {
 		}
 	}
 
+	/**
+	 * Determines if the user name is already set into the DB or not.
+	 * 
+	 * @return if the user name is already set into the DB, then returns true, else returns false.
+	 */
 	public boolean userNameHasBeenSet() {
 
 		String[] columns = null; // all columns
@@ -92,6 +135,11 @@ public class UserPersistence {
 		return answer;
 	}
 
+	/**
+	 * Returns the user name stored into the DB.
+	 * 
+	 * @return the user name stored into the DB.
+	 */
 	public String getUserName() {
 
 		String[] columns = null; // all columns

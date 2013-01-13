@@ -11,17 +11,31 @@ import co.je.thesis.common.dtos.analysis.AnalysisDTO;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 import co.je.thesis.common.dtos.rules.RuleDTO;
 
+/**
+ * This class provides the methods required to execute the second test scenario.
+ * 
+ * Here is the description of the second test scenario provided by this class:
+ * 
+ * This scenario allows you to create analysis requests, composed by three rules:  
+ * a basic rule, a rule that involves average and a rule that involves summation.
+ * these three rules are created randomly.
+ * 
+ * Later you should define a the number of analysis request you want this class to create.
+ * This class creates that number of analysis, and puts each analysis into one independent
+ * thread from a thread pool. Finally sends all the threads to make the "create analysis
+ * request" to the system's server.
+ * 
+ * @author Julian Espinel
+ */
 public class SecondScenarioExecutor {
 
 	/**
-	 * Returns a random between [initialNumber, lastNumber] both inclusive.
+	 * Returns a random number between [initialNumber, lastNumber] both inclusive.
 	 * 
-	 * @param initialNumber
-	 *            , initial number
-	 * @param lastNumber
-	 *            , last number
+	 * @param initialNumber the initial number.
+	 * @param lastNumber the last number.
 	 * 
-	 * @return A random between [initialNumber, lastNumber] both inclusive.
+	 * @return A random number between [initialNumber, lastNumber] both inclusive.
 	 */
 	private int getRandomNumberBetween(int initialNumber, int lastNumber) {
 
@@ -42,6 +56,13 @@ public class SecondScenarioExecutor {
 		return answer;
 	}
 
+	/**
+	 * Returns a random date before a given date. The returned and the given date, both
+	 * must follow this format: dd-MM-yyyy.
+	 * 
+	 * @param actualDate the given date. This date acts as the superior limit.
+	 * @return a random date before the given date, returned in the following format: dd-MM-yyyy.
+	 */
 	private String getRandomDateBefore(String actualDate) {
 
 		String[] splitArray = actualDate.split("-");
@@ -58,6 +79,11 @@ public class SecondScenarioExecutor {
 		return randomDate;
 	}
 
+	/**
+	 * Returns a random date in the following format: dd-MM-yyyy.
+	 * 
+	 * @return a random date in the following format: dd-MM-yyyy.
+	 */
 	private String getRandomDate() {
 
 		int newDay = getRandomNumberBetween(1, 30);
@@ -69,6 +95,13 @@ public class SecondScenarioExecutor {
 		return randomDate;
 	}
 
+	/**
+	 * Returns a random date after a given date. The returned and the given date, both
+	 * must follow this format: dd-MM-yyyy.
+	 * 
+	 * @param actualDate the given date. This date acts as the inferior limit.
+	 * @return a random date after the given date, returned in the following format: dd-MM-yyyy.
+	 */
 	private String getRandomDateAfter(String actualDate) {
 
 		String[] splitArray = actualDate.split("-");
@@ -85,6 +118,12 @@ public class SecondScenarioExecutor {
 		return randomDate;
 	}
 
+	/**
+	 * Returns a basic rule with random dates. A basic rule is a rule that doesn't involve
+	 * operations such as average, summation or composite rules.
+	 * 
+	 * @return a basic rule with random dates.
+	 */
 	private RuleDTO getBasicRuleWithRandomDates() {
 
 		ArrayList<DSLElementDTO> ruleElements = new ArrayList<DSLElementDTO>();
@@ -109,6 +148,13 @@ public class SecondScenarioExecutor {
 		return ruleDTO;
 	}
 
+	/**
+	 * Returns a rule that involves the average operation. Average is an operation that
+	 * requires an interval of time. The dates that specify that time interval are generated
+	 * randomly, but assuring that initialDate < finalDate.
+	 * 
+	 * @return Returns a rule that involves the average operation.
+	 */
 	private RuleDTO getRuleWithAverageAndRandomDates() {
 
 		ArrayList<DSLElementDTO> ruleElements = new ArrayList<DSLElementDTO>();
@@ -138,6 +184,13 @@ public class SecondScenarioExecutor {
 		return ruleDTO;
 	}
 
+	/**
+	 * Returns a rule that involves the summation operation. Summation is an operation that
+	 * requires an interval of time. The dates that specify that time interval are generated
+	 * randomly, but assuring that initialDate < finalDate.
+	 * 
+	 * @return Returns a rule that involves the summation operation.
+	 */
 	private RuleDTO getRuleWithSummationAndRandomDates() {
 
 		ArrayList<DSLElementDTO> ruleElements = new ArrayList<DSLElementDTO>();
@@ -164,9 +217,21 @@ public class SecondScenarioExecutor {
 		return ruleDTO;
 	}
 
+	/**
+	 * SecondScenarioExecutor constructor.
+	 */
 	public SecondScenarioExecutor() {
 	}
 
+	/**
+	 * Returns an analysis request that is composed by three rules: a basic rule, a rule that 
+	 * involves average and a rule that involves summation. these rules are generated using the
+	 * following methods respectively: getBasicRuleWithRandomDates, 
+	 * getRuleWithAverageAndRandomDates and getRuleWithSummationAndRandomDates.
+	 * 
+	 * @return an analysis request that is composed by three rules: a basic rule, a rule that 
+	 * 		   involves average and a rule that involves summation.
+	 */
 	private AnalysisDTO getRandomAnalysisDTOForSecondScenario() {
 
 		RuleDTO firstRule = getBasicRuleWithRandomDates();
@@ -191,6 +256,18 @@ public class SecondScenarioExecutor {
 		return analysisDTO;
 	}
 
+	/**
+	 * Executes the second scenario.
+	 * 
+	 * This method creates a fixed thread pool of 30 threads. Then creates the given
+	 * number of analysis request. Each created analysis is created using the 
+	 * getRandomAnalysisDTOForSecondScenario method.
+	 * 
+	 * The method creates one AnalysisTask object per analysis request. Finally sends all
+	 * the analysis request to the system's server concurrently.
+	 * 
+	 * @param numberOfAnalysis the number of analysis request we want to create.
+	 */
 	public void executeScenario(int numberOfAnalysis) {
 
 		int numberOfThreads = 30;
@@ -208,6 +285,13 @@ public class SecondScenarioExecutor {
 		threadPool.shutdown();
 	}
 	
+	/**
+	 * Creates a SecondScenarioExecutor object, defines the number of the analysis we want
+	 * to create for the test, and then executes the scenario by calling the
+	 * executeScenario method.
+	 * 
+	 * @param args none.
+	 */
 	public static void main(String[] args) {
 		
 		SecondScenarioExecutor secondScenarioExecutor = new SecondScenarioExecutor();

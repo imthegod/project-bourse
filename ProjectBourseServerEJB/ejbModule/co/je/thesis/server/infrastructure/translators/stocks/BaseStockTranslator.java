@@ -6,7 +6,7 @@ import co.je.thesis.common.dbos.stocks.BaseStockDBO;
 import co.je.thesis.common.dtos.stocks.BaseStock;
 
 /**
- * Class to know how to translate from BaseStock objects to BaseStockDBO objects,
+ * Class to know how to translate from BaseStock objects to BaseStockDBO objects
  * and vice versa.
  * 
  * @author Julian Espinel
@@ -47,6 +47,12 @@ public class BaseStockTranslator {
 		return baseStockDBO;
 	}
 	
+	/**
+	 * Translates a BasicDBObject into a BaseStockDBO object.
+	 * 
+	 * @param basicDBO the object we want to translate.
+	 * @return a BaseStockDBO object with the information contained by the BasicDBObject.
+	 */
 	public BaseStockDBO translateToDBO(BasicDBObject basicDBO) {
 		
 		String symbol = basicDBO.getString(BaseStockDBO.SYMBOL);

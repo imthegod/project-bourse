@@ -8,8 +8,18 @@ import co.je.thesis.server.persistence.dbos.AnalysisResultsStorageDBO;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 
+/**
+ * This class is responsible for the persistence of the analisys requests.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisPersistence {
 
+	/**
+	 * Saves the analysis results into the DB.
+	 * 
+	 * @param analysisResultsStorage the object that contains the analysis results.
+	 */
 	public void saveAnalysisResults(AnalysisResultsStorageDTO analysisResultsStorage) {
 
 		AnalysisResultsStorageTranslator translator = new AnalysisResultsStorageTranslator();
@@ -19,6 +29,15 @@ public class AnalysisPersistence {
 		analysisResultsCollection.insert(analysisResultsStorageDBO);
 	}
 
+	/**
+	 * Retrieves the results of a specific analysis. An analysis is identified by the user name
+	 * of the investor that created it and the UUID of the analysis.
+	 * 
+	 * @param ownerUserName the user name of the investor who created the analysis.
+	 * @param uuid the UUID of the analysis we are looking for.
+	 * @return an AnalysisResultsStorageDTO object. This object contains the results of the
+	 * 		   specified analysis.
+	 */
 	public AnalysisResultsStorageDTO getAnalysisResults(String ownerUserName, String uuid) {
 
 		AnalysisResultsStorageDBO queryDBO = AnalysisResultsStorageDBO.createQueryDBO(ownerUserName, uuid);
@@ -41,6 +60,13 @@ public class AnalysisPersistence {
 		}
 	}
 	
+	/**
+	 * Remove the result of a specific analysis. An analysis is identified by the user name
+	 * of the investor that created it and the UUID of the analysis.
+	 * 
+	 * @param ownerUserName the user name of the investor who created the analysis.
+	 * @param uuid the UUID of the analysis for which we want to delete its results.
+	 */
 	public void removeAnalysisResult(String ownerUserName, String uuid) {
 		
 		AnalysisResultsStorageDBO queryDBO = AnalysisResultsStorageDBO.createQueryDBO(ownerUserName, uuid);

@@ -5,8 +5,16 @@ import java.util.ArrayList;
 import co.je.thesis.common.constants.DSLCategories;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 
+/**
+ * This class models the average command.
+ * 
+ * @author Julian Espinel
+ */
 public class AverageCommand extends BasicCommand {
 
+	/**
+	 * This constant stores the command name.
+	 */
 	public static final String COMMAND_NAME = "AVERAGE_COMMAND";
 
 	/**
@@ -21,19 +29,27 @@ public class AverageCommand extends BasicCommand {
 
 	/**
 	 * Time frame is a String object which contains one date. The date is
-	 * formatted like this: dd-mm-yyyy
+	 * formatted like this: dd-MM-yyyy.
 	 */
 	private String timeFrame1;
 
 	/**
 	 * Time frame is a String object which contains one date. The date is
-	 * formatted like this: dd-mm-yyyy
+	 * formatted like this: dd-MM-yyyy.
 	 */
 	private String timeFrame2;
 
 	public AverageCommand() {
 	}
 
+	/**
+	 * AverageCommand constructor.
+	 * 
+	 * @param mathOperation the String which represents the math operation to execute (average).
+	 * @param property property of a stock. For example: close price, volume, etc.
+	 * @param timeFrame1 the initial date formatted like this: dd-MM-yyyy.
+	 * @param timeFrame2 the final date formatted like this: dd-MM-yyyy.
+	 */
 	public AverageCommand(String mathOperation, String property, String timeFrame1,
 			String timeFrame2) {
 
@@ -64,6 +80,14 @@ public class AverageCommand extends BasicCommand {
 		return COMMAND_NAME;
 	}
 
+	/**
+	 * Given an ArrayList of DSL elements, this method determines if all the elements of the 
+	 * ArrayList correspond to this command and are in the correct order.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return if all the elements of the ArrayList correspond to this command and are in the 
+	 * 		   correct order, then returns true, else returns false.
+	 */
 	public static boolean dslElementsCorrespondToThisCommand(ArrayList<DSLElementDTO> elementsArray) {
 
 		boolean elementsCorrespondToThisCommand = false;
@@ -120,6 +144,12 @@ public class AverageCommand extends BasicCommand {
 		return elementsCorrespondToThisCommand;
 	}
 
+	/**
+	 * Builds an AverageCommand with the DSL elements contained into the ArrayList.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return an AverageCommand with the DSL elements contained into the ArrayList.
+	 */
 	public static ICommand buildCommand(ArrayList<DSLElementDTO> elementsArray) {
 
 		int numberOfFields = 4;

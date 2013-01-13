@@ -16,9 +16,21 @@ import co.je.thesis.common.dtos.analysis.AnalysisResultsStorageDTO;
 import co.je.thesis.server.application.analysis.AnalysisRequestHandler;
 import co.je.thesis.server.application.analysis.AsyncAnalysisRequestHandler;
 
+/**
+ * This class exposes the REST related with analysis requests.
+ * 
+ * @author Julian Espinel
+ */
 @Path("/analysis")
 public class AnalysisRestServices {
 	
+	/**
+	 * Verifies a String object is not null and not empty.
+	 * 
+	 * @param param the String object to evaluate.
+	 * @return if the String object is not null and not empty, then returns true, else
+	 * 		   returns false.
+	 */
 	private boolean isValidString(String param) {
 		
 		boolean answer = false;
@@ -34,6 +46,14 @@ public class AnalysisRestServices {
 		return answer;
 	}
 	
+	/**
+	 * Creates a new analysis request.
+	 * 
+	 * @param analysisDTO the analysis we want to create.
+	 * @return a Response object. If the action was completed successfully the returns http status
+	 * 		   code 202 (Accepted), else returns http status code 400 (Bad Request).
+	 * @see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+	 */
 	@POST
 	@Consumes("application/json")
 	public Response createAnalysisRequest(AnalysisDTO analysisDTO) {
@@ -61,6 +81,14 @@ public class AnalysisRestServices {
 		return response;
 	}
 	
+	/**
+	 * Returns the results of a specific analysis. The analysis request is identified
+	 * by its UUID and the user name of the investor who created that analysis request.
+	 * 
+	 * @param ownerUserName the user name of the investor who created the analysis.
+	 * @param uuid the UUID of the analysis we are looking for.
+	 * @return the results of a specific analysis request.
+	 */
 	@GET
 	@Produces("application/json")
 	public Response getAnalysisResults(@QueryParam("username") String ownerUserName, 

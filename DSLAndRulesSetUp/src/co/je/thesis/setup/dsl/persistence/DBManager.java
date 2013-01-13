@@ -16,6 +16,9 @@ import com.mongodb.Mongo;
  */
 public class DBManager {
 	
+	/**
+	 * The DB name.
+	 */
 	public static final String DB_NAME = "project_bourse_db";
 	
 	/**
@@ -24,7 +27,7 @@ public class DBManager {
 	private static Mongo mongoConnection;
 	
 	/**
-	 * Attribute that represents the system's DB.
+	 * Attribute that represents the system's DB instance.
 	 */
 	private static DB projectBourseDB;
 	

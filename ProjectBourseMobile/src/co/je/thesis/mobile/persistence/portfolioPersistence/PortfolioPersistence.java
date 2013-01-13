@@ -10,18 +10,37 @@ import android.util.Log;
 import co.je.thesis.mobile.persistence.dbo.PortfolioDBO;
 import co.je.thesis.mobile.persistence.translators.PortfolioTranslator;
 
+/**
+ * This class is responsible for the persistence of the portfolios data.
+ * 
+ * @author Julian Espinel
+ */
 public class PortfolioPersistence {
 
 	// -----------------------------------------------------------------------------------
 	// Constants
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * Constant to model the portfolios table name.
+	 */
 	public static final String PORTFOLIOS = "portfolios";
+	
+	/**
+	 * Constant for logging purposes.
+	 */
 	public static final String TAG = "PortfolioPersistence";
 
 	// Table fields
 
+	/**
+	 * Table column named "name".
+	 */
 	public static final String NAME = "name";
+	
+	/**
+	 * Table column named "number_of_stocks".
+	 */
 	public static final String NUMBER_OF_STOCKS = "number_of_stocks";
 
 	// -----------------------------------------------------------------------------------
@@ -32,17 +51,32 @@ public class PortfolioPersistence {
 	// Methods
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * PortfolioPersistence constructor.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 */
 	public PortfolioPersistence(SQLiteDatabase db) {
 		
 		createTable(db);
 	}
 
+	/**
+	 * Creates the portfolios table.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 */
 	private void createTable(SQLiteDatabase db) {
 
 		String createQuery = getCreatePortfolioTableQuery();
 		db.execSQL(createQuery);
 	}
 
+	/**
+	 * Returns the query needed to create the portfolios table.
+	 * 
+	 * @return the query needed to create the portfolios table.
+	 */
 	private String getCreatePortfolioTableQuery() {
 
 		String createPortfolioTableQuery = "create table if not exists "
@@ -56,6 +90,13 @@ public class PortfolioPersistence {
 	// Portfolio CRUD
 	// -----------------------------------------------------------------------------------
 
+	/**
+	 * Creates a new portfolio into the DB. If a portfolio with the same name already exists
+	 * into the DB, then throws a new SQLiteException.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioDBO the portfolio to be created into the DB.
+	 */
 	public void createPortfolio(SQLiteDatabase db, PortfolioDBO portfolioDBO) {
 
 		ContentValues values = new ContentValues();
@@ -73,6 +114,13 @@ public class PortfolioPersistence {
 		}
 	}
 
+	/**
+	 * Retrieves a specific portfolio from the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio we want to retrieve.
+	 * @return a specific portfolio from the DB.
+	 */
 	public PortfolioDBO readSinglePortfolio(SQLiteDatabase db, String portfolioName) {
 
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
@@ -103,6 +151,12 @@ public class PortfolioPersistence {
 		return foundPortfolio;
 	}
 	
+	/**
+	 * Returns all the portfolios stored into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @return all the portfolios stored into the DB.
+	 */
 	public ArrayList<PortfolioDBO> readAllPortfolios(SQLiteDatabase db) {
 		
 		String[] columns = null; // all columns
@@ -132,6 +186,13 @@ public class PortfolioPersistence {
 		return portfoliosDBO;
 	}
 
+	/**
+	 * Updates a specific portfolio.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio we want to update.
+	 * @param updatedPortfolio the PortfolioDBO object that contains the information we want to update.
+	 */
 	public void updatePortfolio(SQLiteDatabase db, String portfolioName,
 			PortfolioDBO updatedPortfolio) {
 
@@ -176,6 +237,12 @@ public class PortfolioPersistence {
 		}
 	}
 
+	/**
+	 * Deletes a portfolio from the database.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio we want to delete.
+	 */
 	public void deletePortfolio(SQLiteDatabase db, String portfolioName) {
 
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
@@ -196,6 +263,14 @@ public class PortfolioPersistence {
 	// Extra methods
 	// -----------------------------------------------------------------------------------
 	
+	/**
+	 * Determines if a portfolio with a given name exists into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @param portfolioName the name of the portfolio we are looking for.
+	 * @return if a portfolio with a given name exists into the DB, then returns true, else
+	 * 		   returns false.
+	 */
 	public static boolean portfolioAlreadyExists(SQLiteDatabase db, String portfolioName) {
 		
 		String correctedPortfolioNameForDB = PortfolioTranslator.getCorrectedNameForDb(portfolioName);
@@ -227,6 +302,12 @@ public class PortfolioPersistence {
 		return portfolioExists;
 	}
 	
+	/**
+	 * Returns an ArrayList with the names of all the portfolios that are stored into the DB.
+	 * 
+	 * @param db SQLiteDatabase object. It exposes methods to manage a SQLite database.
+	 * @return an ArrayList with the names of all the portfolios that are stored into the DB.
+	 */
 	public static ArrayList<String> getAllPortfolioNames(SQLiteDatabase db) {
 		
 		String[] columns = null; // all columns

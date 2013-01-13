@@ -9,9 +9,20 @@ import javax.ws.rs.core.Response;
 import co.je.thesis.common.dtos.dsl.DSLDataTransferObject;
 import co.je.thesis.server.application.dsl.DSLRequestHandler;
 
+/**
+ * This class exposes the REST related with the system's DSL.
+ * 
+ * @author Julian Espinel
+ */
 @Path("/dsl")
 public class DSLRestServices {
 	
+	/**
+	 * Determines if a given DSL's version number is up to date.
+	 * 
+	 * @param dslVersion the version number we want to know if it is up to date or not.
+	 * @return if the given DSL's version number is up to date, then returns true, else returns false.
+	 */
 	@GET
 	@Path("/{param}")
 	@Produces("application/json")
@@ -25,6 +36,11 @@ public class DSLRestServices {
 		return response;
 	}
 	
+	/**
+	 * Returns the current (and last) DSL version number.
+	 * 
+	 * @return the current (and last) DSL version number.
+	 */
 	@GET
 	@Path("/version")
 	@Produces("application/json")
@@ -38,6 +54,11 @@ public class DSLRestServices {
 		return response;
 	}
 	
+	/**
+	 * Returns the whole DSL on its current (and last) version.
+	 * 
+	 * @return the whole DSL on its current (and last) version.
+	 */
 	@GET
 	@Produces("application/json")
 	public Response getUpdatedDSL() {

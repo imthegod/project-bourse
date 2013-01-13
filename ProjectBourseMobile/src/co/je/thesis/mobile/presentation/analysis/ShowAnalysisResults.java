@@ -28,6 +28,12 @@ import co.je.thesis.mobile.presentation.dialogs.SelectPortfolioDialog;
 import co.je.thesis.mobile.presentation.portfolio.AddSpecificStockActivity;
 import co.je.thesis.mobile.presentation.portfolio.EditStockActivity;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Show the results of a specific analysis.
+ * 
+ * @author Julian Espinel
+ */
 public class ShowAnalysisResults extends Activity implements OnItemClickListener,
 ICreateDialogActivity {
 

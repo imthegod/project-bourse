@@ -12,31 +12,71 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import co.je.thesis.mobile.persistence.DatabaseOpenHelper;
 
+/**
+ * This class is responsible for the persistence of the analysis requests data.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisPersistence {
 
+	/**
+	 * Constant for logging purposes.
+	 */
 	public static final String TAG = "AnalysisPersistence";
 
+	/**
+	 * The name of the table that stores the pending analyses.
+	 */
 	public static final String PENDINGS_ANALYSIS = "pendings_analysis";
+	
+	/**
+	 * Constant to represent an analysis UUID.
+	 */
 	public static final String UUID = "uuid";
+	
+	/**
+	 * Constant to represent an analysis date.
+	 */
 	public static final String DATE = "date";
 
+	/**
+	 * Attribute that allow us to connect to the SQLiteDB.
+	 */
 	private DatabaseOpenHelper dbOpenHelper;
+	
+	/**
+	 * Attribute that exposes methods to manage a SQLite database. 
+	 */
 	private SQLiteDatabase liteDb;
 
+	/**
+	 * AnalysisPersistence constructor.
+	 * 
+	 * @param context the Android App context.
+	 * @see http://developer.android.com/reference/android/content/Context.html
+	 */
 	public AnalysisPersistence(Context context) {
 
 		dbOpenHelper = new DatabaseOpenHelper(context);
 		liteDb = dbOpenHelper.getDbInstance();
 
-		createTable(liteDb);
+		createPendingAnalysisTable();
 	}
 
-	private void createTable(SQLiteDatabase db) {
+	/**
+	 * Creates the pending analysis table.
+	 */
+	private void createPendingAnalysisTable() {
 
 		String createQuery = getCreatePendingsAnalysisTableQuery();
-		db.execSQL(createQuery);
+		liteDb.execSQL(createQuery);
 	}
 
+	/**
+	 * Returns the query necessary to create the pending analysis table.
+	 * 
+	 * @return the query necessary to create the pending analysis table.
+	 */
 	private String getCreatePendingsAnalysisTableQuery() {
 
 		String createUserTableQuery = "create table if not exists " + PENDINGS_ANALYSIS + " ("
@@ -45,6 +85,11 @@ public class AnalysisPersistence {
 		return createUserTableQuery;
 	}
 
+	/**
+	 * Returns the current date in the following format:"dd-MM-yyyy HH:mm:ss" 
+	 * 
+	 * @return the current date in the following format:"dd-MM-yyyy HH:mm:ss"
+	 */
 	private String getCurrentDate() {
 
 		String pattern = "dd-MM-yyyy HH:mm:ss";
@@ -56,6 +101,11 @@ public class AnalysisPersistence {
 		return currentDate;
 	}
 
+	/**
+	 * Adds a new pending analysis to the DB.
+	 * 
+	 * @param uuid the UUID of the analysis we want to add to the DB.
+	 */
 	public void addPendingAnalysis(String uuid) {
 
 		ContentValues values = new ContentValues();
@@ -76,6 +126,11 @@ public class AnalysisPersistence {
 		}
 	}
 
+	/**
+	 * Determines if there are pending analyses.
+	 * 
+	 * @return if there are pending analyses, then returns true, else returns false.
+	 */
 	public boolean existsPendingAnalysis() {
 
 		String[] columns = null; // all columns
@@ -105,6 +160,12 @@ public class AnalysisPersistence {
 		return answer;
 	}
 
+	/**
+	 * Returns a pending analysis given its UUID.
+	 * 
+	 * @param uuidParam the UUID of the pending analysis we are looking for. 
+	 * @return a pending analysis given its UUID.
+	 */
 	public String getPendingAnalysis(String uuidParam) {
 
 		String[] columns = null; // all columns
@@ -134,6 +195,11 @@ public class AnalysisPersistence {
 		return uuidAnswer;
 	}
 
+	/**
+	 * Returns an ArrayList with the UUIDs of all the pending analysis stored into the DB.
+	 * 
+	 * @return an ArrayList with the UUIDs of all the pending analysis stored into the DB.
+	 */
 	public ArrayList<String> getAllPendingAnalysisUuids() {
 
 		String[] columns = null; // all columns
@@ -160,6 +226,11 @@ public class AnalysisPersistence {
 		return pendingAnalysis;
 	}
 
+	/**
+	 * Returns an ArrayList with the dates of all the pending analysis stored into the DB.
+	 * 
+	 * @return an ArrayList with the dates of all the pending analysis stored into the DB.
+	 */
 	public ArrayList<String> getAllPendingAnalysisDates() {
 
 		String[] columns = null; // all columns
@@ -186,6 +257,12 @@ public class AnalysisPersistence {
 		return pendingAnalysis;
 	}
 
+	/**
+	 * Returns the UUID of a pending analysis with the given date.
+	 * 
+	 * @param dateParam the date of the pending analysis that we want looking for.
+	 * @return the UUID of a pending analysis with the given date.
+	 */
 	public String getUuidByDate(String dateParam) {
 		
 		String[] columns = null; // all columns
@@ -216,6 +293,12 @@ public class AnalysisPersistence {
 		return uuidAnswer;
 	}
 	
+	/**
+	 * Returns the date of a pending analysis given its UUID.
+	 * 
+	 * @param uuidParam the UUID of the pending analysis we are looking for.
+	 * @return the date of a pending analysis given its UUID.
+	 */
 	public String getDateByUuid(String uuidParam) {
 
 		String[] columns = null; // all columns
@@ -246,6 +329,11 @@ public class AnalysisPersistence {
 		return uuidAnswer;
 	}
 
+	/**
+	 * Removes the pending analysis of the given UUID from the DB.
+	 * 
+	 * @param uuidParam the UUID of the pending analysis that we want to remove from the DB.
+	 */
 	public void removePendingAnalysis(String uuidParam) {
 
 		String uuid = getPendingAnalysis(uuidParam);

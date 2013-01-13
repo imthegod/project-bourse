@@ -19,6 +19,12 @@ import co.je.thesis.mobile.logic.businessObjects.Portfolio;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Show general information of the investor's portfolios.
+ * 
+ * @author Julian Espinel
+ */
 public class ViewPortfolioActivity extends Activity implements OnItemClickListener {
 
 	public static final String TAG = "ViewPortfolioActivity";

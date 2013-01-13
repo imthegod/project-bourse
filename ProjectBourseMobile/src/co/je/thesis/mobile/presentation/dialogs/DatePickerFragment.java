@@ -9,6 +9,12 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 import android.widget.DatePicker;
 
+/**
+ * This class extends an Android DialogFragment. This Dialog supports the following functionality: 
+ * Pick a date.
+ * 
+ * @author Julian Espinel
+ */
 public class DatePickerFragment extends DialogFragment implements OnDateSetListener {
 
 	private String resultDate;

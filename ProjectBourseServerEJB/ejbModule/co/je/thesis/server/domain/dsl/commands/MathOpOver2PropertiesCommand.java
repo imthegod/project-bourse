@@ -5,8 +5,16 @@ import java.util.ArrayList;
 import co.je.thesis.common.constants.DSLCategories;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 
+/**
+ * This clas models a MathOpOver2PropertiesCommand.
+ * 
+ * @author Julian Espinel
+ */
 public class MathOpOver2PropertiesCommand extends BasicCommand {
 
+	/**
+	 * This constant stores the command name.
+	 */
 	public static final String COMMAND_NAME = "MATH_OVER_TWO_PROPERTIES_COMMAND";
 
 	/**
@@ -26,13 +34,21 @@ public class MathOpOver2PropertiesCommand extends BasicCommand {
 
 	/**
 	 * Time frame is a String object which contains one date. The date is
-	 * formatted like this: dd-mm-yyyy
+	 * formatted like this: dd-MM-yyyy.
 	 */
 	private String timeFrame;
 
 	public MathOpOver2PropertiesCommand() {
 	}
 
+	/**
+	 * MathOpOver2PropertiesCommand constructor.
+	 * 
+	 * @param mathOperation the math operation of the command.
+	 * @param firstProperty a property of a stock. For example: close price, volume, etc.
+	 * @param secondProperty a property of a stock. For example: close price, volume, etc.
+	 * @param timeFrame a date formatted like this: dd-MM-yyyy.
+	 */
 	public MathOpOver2PropertiesCommand(String mathOperation, String firstProperty,
 			String secondProperty, String timeFrame) {
 
@@ -63,6 +79,14 @@ public class MathOpOver2PropertiesCommand extends BasicCommand {
 		return COMMAND_NAME;
 	}
 
+	/**
+	 * Given an ArrayList of DSL elements, this method determines if all the elements of the 
+	 * ArrayList correspond to this command and are in the correct order.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return if all the elements of the ArrayList correspond to this command and are in the 
+	 * 		   correct order, then returns true, else returns false.
+	 */
 	public static boolean dslElementsCorrespondToThisCommand(ArrayList<DSLElementDTO> elementsArray) {
 
 		boolean elementsCorrespondToThisCommand = false;
@@ -119,6 +143,12 @@ public class MathOpOver2PropertiesCommand extends BasicCommand {
 		return elementsCorrespondToThisCommand;
 	}
 
+	/**
+	 * Builds an MathOpOver2PropertiesCommand with the DSL elements contained into the ArrayList.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return an MathOpOver2PropertiesCommand with the DSL elements contained into the ArrayList.
+	 */
 	public static ICommand buildCommand(ArrayList<DSLElementDTO> elementsArray) {
 
 		int numberOfFields = 4;

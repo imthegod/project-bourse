@@ -44,6 +44,12 @@ import co.je.thesis.mobile.presentation.UIUtils;
 import co.je.thesis.mobile.presentation.dialogs.ICreateDialogActivity;
 import co.je.thesis.mobile.presentation.dialogs.DatePickerFragment;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Create an analysis request.
+ * 
+ * @author Julian Espinel
+ */
 public class CreateAnalysisActivity extends Activity implements OnClickListener,
 OnItemSelectedListener, TextWatcher, OnEditorActionListener, ICreateDialogActivity {
 

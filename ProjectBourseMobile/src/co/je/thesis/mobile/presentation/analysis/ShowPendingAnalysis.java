@@ -15,6 +15,12 @@ import android.widget.ListView;
 import co.je.thesis.mobile.R;
 import co.je.thesis.mobile.logic.analysisManager.AnalysisManager;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Show the analysis requests whose results are still in the system's server.
+ * 
+ * @author Julian Espinel
+ */
 public class ShowPendingAnalysis extends Activity implements OnItemClickListener {
 
 	private ArrayAdapter<String> pendingAnalysisArrayAdapter;

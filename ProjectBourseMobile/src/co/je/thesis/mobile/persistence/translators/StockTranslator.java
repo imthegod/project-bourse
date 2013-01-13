@@ -3,8 +3,20 @@ package co.je.thesis.mobile.persistence.translators;
 import co.je.thesis.mobile.logic.businessObjects.Stock;
 import co.je.thesis.mobile.persistence.dbo.StockDBO;
 
+/**
+ * This class knows how to translate objects of type Stock, to StockDBO objects 
+ * and vice versa.
+ * 
+ * @author Julian Espinel
+ */
 public class StockTranslator {
 
+	/**
+	 * Translates a Stock object into a StockDBO object.
+	 * 
+	 * @param stock the Stock object we want to translate.
+	 * @return a StockDBO object with the information stored by the Stock object.
+	 */
 	public static StockDBO toDBO(Stock stock) {
 		
 		String symbol = stock.getSymbol();
@@ -31,6 +43,12 @@ public class StockTranslator {
 		return stockDBO;
 	}
 	
+	/**
+	 * Translates a StockDBO object into a Stock object.
+	 * 
+	 * @param stockDBO the StockDBO object we want to translate.
+	 * @return a Stock object with the information stored by the StockDBO object.
+	 */
 	public static Stock toBusinessObjetc(StockDBO stockDBO) {
 		
 		String symbol = stockDBO.getSymbol();

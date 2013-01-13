@@ -11,11 +11,25 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
+/**
+ * This class is responsible for handling the stock data persistence.
+ * 
+ * @author Julian Espinel
+ */
 public class StockPersistence {
 
+	/**
+	 * StockPersistence constructor.
+	 */
 	public StockPersistence() {
 	}
 
+	/**
+	 * Returns an ArrayList which contains the system's base stocks.
+	 * The base stocks are the stocks of the NYSE that are supported by this system.
+	 * 
+	 * @return an ArrayList which contains the system's base stocks.
+	 */
 	public ArrayList<BaseStock> getBaseStocks() {
 
 		DBCollection baseStocksCollection = DBManager.getBaseStocksCollection();
@@ -36,6 +50,13 @@ public class StockPersistence {
 		return baseStocks;
 	}
 
+	/**
+	 * Returns the stock collection identified by its symbol.
+	 * 
+	 * @param stockSymbol The the symbol of the stock for which we want to get its
+	 *        collection.
+	 * @return The collection of the stock of the given symbol.
+	 */
 	public DBCollection getStockCollection(String stockSymbol) {
 
 		DBCollection stockCollection = DBManager.getStockCollection(stockSymbol);

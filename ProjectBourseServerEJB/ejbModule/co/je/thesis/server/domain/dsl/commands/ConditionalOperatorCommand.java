@@ -5,10 +5,21 @@ import java.util.ArrayList;
 import co.je.thesis.common.constants.DSLCategories;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 
+/**
+ * This class models the conditional operator command.
+ * 
+ * @author Julian Espinel
+ */
 public class ConditionalOperatorCommand extends BasicCommand {
 	
+	/**
+	 * This constant stores the command name.
+	 */
 	public static final String COMMAND_NAME = "CONDITIONAL_OPERATOR_COMMAND";
 	
+	/*
+	 * Conditional constants.
+	 */
 	public static final String LESS = "<";
 	public static final String LESS_EQUAL = "<=";
 	public static final String GREATER = ">";
@@ -24,6 +35,12 @@ public class ConditionalOperatorCommand extends BasicCommand {
 	public ConditionalOperatorCommand() {
 	}
 
+	/**
+	 * ConditionalOperatorCommand constructor.
+	 * 
+	 * @param conditionalOperator the conditional operator of the command. Should match one
+	 * 							  of the constants conditional defined in this class.
+	 */
 	public ConditionalOperatorCommand(String conditionalOperator) {
 		this.conditionalOperator = conditionalOperator;
 	}
@@ -37,6 +54,14 @@ public class ConditionalOperatorCommand extends BasicCommand {
 		return COMMAND_NAME;
 	}
 	
+	/**
+	 * Given an ArrayList of DSL elements, this method determines if all the elements of the 
+	 * ArrayList correspond to this command and are in the correct order.
+	 * 
+	 * @param elementsArray the ArrayList that contains the DSL elements.
+	 * @return if all the elements of the ArrayList correspond to this command and are in the 
+	 * 		   correct order, then returns true, else returns false.
+	 */
 	public static boolean dslElementsCorrespondToThisCommand(ArrayList<DSLElementDTO> elementsArray) {
 		
 		boolean elementsCorrespondToThisCommand = false;

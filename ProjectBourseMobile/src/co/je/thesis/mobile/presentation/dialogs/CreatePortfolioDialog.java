@@ -13,6 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * This class extends an Android DialogFragment. This Dialog supports the following functionality: 
+ * Create portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class CreatePortfolioDialog extends DialogFragment implements OnClickListener {
 	
 	private String portfolioName;

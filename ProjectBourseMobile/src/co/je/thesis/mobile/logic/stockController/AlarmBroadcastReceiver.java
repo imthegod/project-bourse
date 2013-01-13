@@ -15,11 +15,27 @@ import co.je.thesis.mobile.logic.businessObjects.Stock;
 import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.portfolio.EditStocksOutOfLimitsActivity;
 
+/**
+ * This class is responsible of verify if any stock is out of its limits (stop loss and take profit),
+ * and notify the user if so. 
+ * 
+ * @author Julian Espinel
+ */
 public class AlarmBroadcastReceiver extends BroadcastReceiver {
 
+	/**
+	 * Default constructor.
+	 */
 	public AlarmBroadcastReceiver() {
 	}
 
+	/**
+	 * Notifies the user about the out of limit stocks.
+	 * 
+	 * @param context the Android App context.
+	 * @param outOfLimitsStocks an ArrayList that contains the stocks that have surpassed its
+	 * 		  defined limits.
+	 */
 	private void notifyUser(Context context, ArrayList<Stock> outOfLimitsStocks) {
 
 		int numberOfStocks = outOfLimitsStocks.size();
@@ -66,6 +82,12 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
 		notoficationManager.notify(notifID, notification);
 	}
 
+	/**
+	 * Returns an ArrayList with the the stocks that have surpassed its limits.
+	 * 
+	 * @param context the Android App context.
+	 * @return an ArrayList with the the stocks that have surpassed its limits.
+	 */
 	private ArrayList<Stock> getOutOfLimitsStocks(Context context) {
 
 		PortfolioManager portfolioManager = new PortfolioManager(context);
@@ -97,6 +119,11 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
 		return stocksOutOfLimits;
 	}
 
+	/**
+	 * This method is called when the BroadcastReceiver is receiving an Intent broadcast.
+	 * 
+	 * @see http://developer.android.com/reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)
+	 */
 	@Override
 	public void onReceive(Context context, Intent intent) {
 

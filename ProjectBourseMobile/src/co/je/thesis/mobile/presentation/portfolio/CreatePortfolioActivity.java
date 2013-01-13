@@ -16,6 +16,12 @@ import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Create a portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class CreatePortfolioActivity extends Activity implements OnClickListener {
 
 	public static final String TAG = "CreatePortfolioActivity";

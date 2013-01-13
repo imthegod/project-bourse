@@ -12,8 +12,21 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.os.AsyncTask;
 import co.je.thesis.mobile.communication.utils.CommunicationUtils;
 
+/**
+ * This class handles the logic necessary for make a GET request to the server in order to retrieve
+ * the valid rules version. This operation executes asynchronously.
+ * 
+ * @author Julian Espinel
+ */
 public class GetValidRulesVersionAsyncTask extends AsyncTask<String, Void, String> {
 	
+	/**
+	 * Consumes the REST services exposed by the server, that allow us to retrieve the valid rules 
+	 * version.
+	 * 
+	 * @param uri, the URI to access the valid rules version.
+	 * @return a String object which contains the current valid rules version.
+	 */
 	private String getValidRulesVersion(String uri) {
 		
 		HttpClient httpClient = new DefaultHttpClient();
@@ -37,6 +50,11 @@ public class GetValidRulesVersionAsyncTask extends AsyncTask<String, Void, Strin
 		return jsonValidRulesVersion;
 	}
 
+	/**
+	 * Calls the getValidRulesVersion method and returns the results of it.
+	 * 
+	 * @see http://developer.android.com/reference/android/os/AsyncTask.html#doInBackground(Params...)
+	 */
 	@Override
 	protected String doInBackground(String... params) {
 		

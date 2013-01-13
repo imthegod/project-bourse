@@ -13,6 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * This class extends an Android DialogFragment. This Dialog supports the following functionality: 
+ * Acquire the investor's user name.
+ * 
+ * @author Julian Espinel
+ */
 public class GetUserNameDialog extends DialogFragment implements OnClickListener {
 	
 	private String userName;

@@ -8,6 +8,12 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+/**
+ * This class extends an Android DialogFragment. This Dialog supports the following functionality: 
+ * Select a portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class SelectPortfolioDialog extends DialogFragment {
 
 	public static final String NEW_PORTFOLIO_ITEM = "New portfolio";

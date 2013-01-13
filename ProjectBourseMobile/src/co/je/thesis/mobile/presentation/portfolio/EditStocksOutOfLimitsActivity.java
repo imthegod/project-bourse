@@ -21,6 +21,12 @@ import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Edit a stock that is out of its defined limits.
+ * 
+ * @author Julian Espinel
+ */
 public class EditStocksOutOfLimitsActivity extends Activity implements OnClickListener {
 
 	public static final String TAG = "EditStocksOutOfLimitsActivity";

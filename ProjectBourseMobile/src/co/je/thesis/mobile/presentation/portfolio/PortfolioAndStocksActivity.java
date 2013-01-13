@@ -21,6 +21,12 @@ import co.je.thesis.mobile.logic.portfolioManager.PortfolioManager;
 import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Show the stocks of a specific portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class PortfolioAndStocksActivity extends Activity implements OnClickListener, OnItemClickListener {
 
 	public static final String TAG = "PortfolioAndStocksActivity";

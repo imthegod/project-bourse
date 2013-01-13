@@ -19,17 +19,39 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
+/**
+ * This class knows how to execute any command that is derived from an analysis rule.
+ * 
+ * @author Julian Espinel
+ */
 public class CommandQueryExecutor {
 
+	/**
+	 * CommandQueryExecutor constructor.
+	 */
 	public CommandQueryExecutor() {
 	}
 
+	/**
+	 * Returns the collection of a given stock. The collection of a stock contains all the
+	 * historical data of that stock.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to retrieve its collection.
+	 * @return the collection of a given stock.
+	 */
 	private DBCollection getStockCollection(String stockSymbol) {
 
 		DBCollection stockCollection = DBManager.getStockCollection(stockSymbol);
 		return stockCollection;
 	}
 
+	/**
+	 * Returns the value of the selected property from an HistoricalStockDBO object.
+	 * 
+	 * @param historicalStockDBO the object from which we want to retrieve a property value.
+	 * @param property the property we want to know its value.
+	 * @return the value of the selected property from an HistoricalStockDBO object.
+	 */
 	private double getProperty(HistoricalStockDBO historicalStockDBO, String property) {
 
 		double answer = -1;
@@ -58,6 +80,12 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Returns a Date object from an String object that is formate like: "dd-MM-yyyy".
+	 * 
+	 * @param stringDate the date from which we want to retrieve a Date object.
+	 * @return a Date object from an String object.
+	 */
 	private Date parseDate(String stringDate) {
 
 		try {
@@ -73,6 +101,14 @@ public class CommandQueryExecutor {
 		}
 	}
 
+	/**
+	 * Returns the value of a property from a stock on a specific date.
+	 * 
+	 * @param stockSymbol the symbol of the stock from which we want to retrieve a property.
+	 * @param property the property we want to know its value.
+	 * @param timeFrame the date we want to retrieve the property value.
+	 * @return the value of a property from a stock on a specific date.
+	 */
 	public double getPropertyOnSpecificTimeFrame(String stockSymbol, String property,
 			String timeFrame) {
 
@@ -98,6 +134,15 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Returns the average of the given property values between two dates.
+	 * 
+	 * @param stockSymbol the stock from which we want to know a property value.
+	 * @param property the property from which we want to know its value.
+	 * @param timeFrameA the initial date formatted like this: dd-MM-yyyy.
+	 * @param timeFrameB the final date formatted like this: dd-MM-yyyy.
+	 * @return the average of the given property values between two dates.
+	 */
 	public double getAverage(String stockSymbol, String property, String timeFrameA,
 			String timeFrameB) {
 
@@ -137,6 +182,14 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes one of the following math operations: "suma", "resta", "multiplicacion".
+	 * 
+	 * @param mathOperation the math operation we want to execute.
+	 * @param propertyOne the first property value.
+	 * @param propertyTwo the second property value.
+	 * @return The result of the math operation.
+	 */
 	private double executeMathOp(String mathOperation, double propertyOne, double propertyTwo) {
 
 		double answer = -1;
@@ -163,6 +216,16 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a math operation over to stock properties.
+	 * 
+	 * @param stockSymbol the symbol of the stock from which we will retrieve two properties.
+	 * @param mathOperation the math operation to be executed.
+	 * @param propertyA the first property.
+	 * @param propertyB the second property.
+	 * @param timeFrame the date we want to retrieve the properties value.
+	 * @return The result of executing the math operation over the two selected properties.
+	 */
 	public double getMathOpOver2Properties(String stockSymbol, String mathOperation,
 			String propertyA, String propertyB, String timeFrame) {
 
@@ -195,6 +258,17 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Returns the result of apply summation over a nested math operation in a given time interval.
+	 * 
+	 * @param stockSymbol the symbol of the stock from which we will retrieve the properties value.
+	 * @param nestedMathOperation the math operation to apply over the two stock properties.
+	 * @param property1 the first property.
+	 * @param property2 the second property.
+	 * @param timeFrame1 the date to begin the summation process. 
+	 * @param timeFrame2 the date to end the summation process.
+	 * @return the result of apply summation over a nested math operation in a given time interval.
+	 */
 	public double getSummation(String stockSymbol, String nestedMathOperation, String property1, String property2,
 			String timeFrame1, String timeFrame2) {
 
@@ -237,6 +311,14 @@ public class CommandQueryExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a composite command.
+	 * 
+	 * @param stockSymbol the symbol of the stock in which we will apply the composite command.
+	 * @param mathOperation a math operation.
+	 * @param childrenCommands the children commands of the composite command.
+	 * @return the result of execute the composite command.
+	 */
 	public double getComposite(String stockSymbol, String mathOperation,
 			ArrayList<ICommand> childrenCommands) {
 

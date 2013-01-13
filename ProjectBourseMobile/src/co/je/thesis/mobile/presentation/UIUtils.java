@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Utility class for the user interface.
+ * 
+ * @author Julian Espinel
+ */
 public class UIUtils {
 
 	public static final String APP_NAME = "Project Bourse";

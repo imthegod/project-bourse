@@ -11,8 +11,21 @@ import co.je.thesis.common.dtos.stocks.BaseStock;
 import co.je.thesis.server.infrastructure.translators.stocks.BaseStockTranslator;
 import co.je.thesis.server.persistence.dbos.AnalysisResultsStorageDBO;
 
+/**
+ * This class knows how to translate AnalysisResultsStorageDTO to analysisResultsStorageDBO
+ * and vice versa.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisResultsStorageTranslator {
 
+	/**
+	 * Translates an AnalysisResultsStorageDBO object to an AnalysisResultsStorageDTO object.
+	 * 
+	 * @param analysisResultsStorageDBO the object we want to translate.
+	 * @return an AnalysisResultsStorageDTO with the information contained by the
+	 * 		   AnalysisResultsStorageDBO object.
+	 */
 	public AnalysisResultsStorageDTO toDomainObject(AnalysisResultsStorageDBO analysisResultsStorageDBO) {
 
 		String ownerUserName = analysisResultsStorageDBO.getOwnerUserName();
@@ -37,6 +50,13 @@ public class AnalysisResultsStorageTranslator {
 		return analysisResultsStorageDTO;
 	}
 
+	/**
+	 * Translates an AnalysisResultsStorageDTO object to an AnalysisResultsStorageDBO object.
+	 * 
+	 * @param analysisResultsStorageDTO the object we want to translate.
+	 * @return an AnalysisResultsStorageDBO with the information contained by the
+	 * 		   AnalysisResultsStorageDTO object.
+	 */
 	public AnalysisResultsStorageDBO toDBO(AnalysisResultsStorageDTO analysisResultsStorageDTO) {
 
 		String ownerUserName = analysisResultsStorageDTO.getOwnerUserName();
@@ -60,6 +80,13 @@ public class AnalysisResultsStorageTranslator {
 		return analysisResultsStorageDBO;
 	}
 	
+	/**
+	 * Translates a BasicDBObject to an AnalysisResultsStorageDBO object.
+	 * 
+	 * @param basicDBO the BasicDBObject we want to translate.
+	 * @return an AnalysisResultsStorageDBO object with the information contained by the
+	 * 		   given BasicDBObject.
+	 */
 	public AnalysisResultsStorageDBO toDBO(BasicDBObject basicDBO) {
 		
 		String ownerUserName = basicDBO.getString(AnalysisResultsStorageDBO.OWNER_USER_NAME);

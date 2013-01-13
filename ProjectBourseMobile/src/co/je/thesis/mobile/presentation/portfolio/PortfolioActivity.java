@@ -12,6 +12,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import co.je.thesis.mobile.R;
 
+/**
+ * This class extends an Android Activity. This activity provides a menu for the different portfolio
+ * related functionalities.
+ * 
+ * @author Julian Espinel
+ */
 public class PortfolioActivity extends Activity implements OnClickListener {
 
 	public static final String TAG = "PortfolioActivity";

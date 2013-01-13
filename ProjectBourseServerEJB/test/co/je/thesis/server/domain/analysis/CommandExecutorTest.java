@@ -22,6 +22,12 @@ import co.je.thesis.server.domain.dsl.commands.SummationCommand;
 
 import com.google.gson.Gson;
 
+/**
+ * This class provides test in order to verify that the command executor functionalities
+ * work correctly.
+ * 
+ * @author Julian Espinel
+ */
 public class CommandExecutorTest {
 
 	@Before
@@ -32,6 +38,12 @@ public class CommandExecutorTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * PropertyCommand execution test.
+	 * 
+	 * In this test we retrieve the close price of the stock Z on 07-11-2012 and compare it with
+	 * the expected value.
+	 */
 	private void testGetPropertyCommand() {
 
 		String stockSymbol = "Z";
@@ -48,6 +60,12 @@ public class CommandExecutorTest {
 		assertEquals(answer, expectedAnswer, delta);
 	}
 
+	/**
+	 * AverageCommand execution test.
+	 * 
+	 * In this test we calculate AAPL (Apple) stock close price average, from 10-10-2012 to
+	 * 07-11-2012. Then we compare the result it with the expected value.
+	 */
 	private void testGetAverageCommand() {
 
 		String stockSymbol = "AAPL";
@@ -68,6 +86,12 @@ public class CommandExecutorTest {
 		assertEquals(answer, expectedAnswer, delta);
 	}
 
+	/**
+	 * MathOpOver2PropertiesCommand execution test.
+	 * 
+	 * In this test we took the AAPL (Apple) stock to calculate the difference among its close price
+	 * and its open price on 07-11-2012. Then we compare the result it with the expected value.
+	 */
 	private void testGetMathOpOver2PropertiesCommand() {
 
 		String stockSymbol = "AAPL";
@@ -88,6 +112,12 @@ public class CommandExecutorTest {
 		assertEquals(answer, expectedAnswer, delta);
 	}
 
+	/**
+	 * First CompositeCommand execution test.
+	 * 
+	 * In this test we multiply the result of the result of a given number command, with the
+	 * result of a given property command. Then we compare the result it with the expected value. 
+	 */
 	private void testGetComposite1() {
 
 		// Mo + a + b
@@ -116,6 +146,13 @@ public class CommandExecutorTest {
 
 	}
 
+	/**
+	 * Second CompositeCommand execution test.
+	 * 
+	 * In this test we multiply the result of the result of a given number command, with the
+	 * result of a given mathOpOver1Property command. Then we compare the result it with the
+	 * expected value.
+	 */
 	private void testGetComposite2() {
 
 		// Mo + a + c
@@ -148,6 +185,13 @@ public class CommandExecutorTest {
 		assertEquals(answer, expectedAnswer, delta);
 	}
 
+	/**
+	 * SummationCommand execution test.
+	 * 
+	 * In this test we took the AAPL (Apple) stock to execute a summation process over the
+	 * daily difference among its close price and its open price, from 10-10-2012 to 07-11-2012.
+	 * Then we compare the result it with the expected value.
+	 */
 	private void testGetSummation() {
 
 		// summation
@@ -172,6 +216,9 @@ public class CommandExecutorTest {
 		assertEquals(answer, expectedAnswer, delta);
 	}
 
+	/**
+	 * Prints an AnalysisDTO object as JSON.
+	 */
 	private void printJsonAnalysisDTO() {
 
 		ArrayList<RuleDTO> rulesDTO = new ArrayList<RuleDTO>();

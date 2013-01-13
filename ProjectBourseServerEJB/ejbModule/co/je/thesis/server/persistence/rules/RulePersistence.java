@@ -11,11 +11,24 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
+/**
+ * Class that persists the information related with the DSL's valid rules.
+ * 
+ * @author Julian Espinel
+ */
 public class RulePersistence {
 	
+	/**
+	 * RulePersistence constructor.
+	 */
 	public RulePersistence() {
 	}
 	
+	/**
+	 * Returns the current (and last) version number of the valid rules.
+	 * 
+	 * @return the current (and last) version number of the valid rules.
+	 */
 	public int getValidRulesVersion() {
 		
 		DBCollection validRulesVersionCollection = DBManager.getValidRulesVersionCollection();
@@ -25,6 +38,11 @@ public class RulePersistence {
 		return validRulesVerion;
 	}
 	
+	/**
+	 * Returns an ArrayList with all the valid rules on its current (and last) version.
+	 * 
+	 * @return an ArrayList with all the valid rules on its current (and last) version.
+	 */
 	public ArrayList<ValidRule> getValidRules() {
 		
 		DBCollection validRulesCollection = DBManager.getValidRulesCollection();

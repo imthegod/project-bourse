@@ -8,11 +8,26 @@ import co.je.thesis.common.dtos.stocks.BaseStock;
 import co.je.thesis.server.domain.dsl.DSLManager;
 import co.je.thesis.server.domain.dsl.commands.ICommand;
 
+/**
+ * This class is responsible for receive and process an analysis request.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisHandler {
 
+	/**
+	 * AnalysisHandler constructor.
+	 */
 	public AnalysisHandler() {
 	}
 
+	/**
+	 * Returns the number of occurrences of a specific BaseStock object within an ArrayList. 
+	 * 
+	 * @param baseStocks the ArrayList of BaseStock objects.
+	 * @param element the specific BaseStock object we want to find.
+	 * @return the number of occurrences of a specific BaseStock object within an ArrayList.
+	 */
 	private int getOccurrencesOfAnElemtIntoTheArray(ArrayList<BaseStock> baseStocks, BaseStock element) {
 		
 		int elemntOccurrences = 0;
@@ -31,6 +46,13 @@ public class AnalysisHandler {
 		return elemntOccurrences;
 	}
 
+	/**
+	 * Returns an ArrayList with the stocks that fulfill all the rules of the analysis.
+	 * 
+	 * @param accumulatedResults the results of all the rules of the analysis.
+	 * @param numberOfRules the number of rules that compound the analysis.
+	 * @return an ArrayList with the stocks that fulfill all the rules of the analysis.
+	 */
 	private ArrayList<BaseStock> getIntersectionArray(ArrayList<BaseStock> accumulatedResults, int numberOfRules) {
 
 		ArrayList<BaseStock> intersectionArray = new ArrayList<BaseStock>();
@@ -58,6 +80,13 @@ public class AnalysisHandler {
 		return intersectionArray;
 	}
 
+	/**
+	 * Executes the analysis request and returns an ArrayList with the stocks that fulfill
+	 * all rules of the analysis.
+	 * 
+	 * @param analysisDTO the analysis we want to be executed.
+	 * @return an ArrayList with the stocks that fulfill all rules of the analysis.
+	 */
 	public ArrayList<BaseStock> executeAnalysis(AnalysisDTO analysisDTO) {
 
 		DSLManager dslManager = new DSLManager();

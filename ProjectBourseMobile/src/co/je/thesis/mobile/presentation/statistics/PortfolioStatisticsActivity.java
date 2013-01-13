@@ -26,6 +26,12 @@ import co.je.thesis.mobile.presentation.MainActivity;
 import co.je.thesis.mobile.presentation.UIUtils;
 import co.je.thesis.mobile.presentation.portfolio.EditStockActivity;
 
+/**
+ * This class extends an Android Activity. This activity supports the following functionality: 
+ * Show statistics of a specific portfolio.
+ * 
+ * @author Julian Espinel
+ */
 public class PortfolioStatisticsActivity extends Activity implements OnClickListener, OnItemClickListener {
 
 	public static final String TAG = "PortfolioStatisticsActivity";

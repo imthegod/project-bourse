@@ -11,8 +11,19 @@ import co.je.thesis.common.dtos.analysis.AnalysisDTO;
 import co.je.thesis.common.dtos.dsl.DSLElementDTO;
 import co.je.thesis.common.dtos.rules.RuleDTO;
 
+/**
+ * This class provides a method to verify that the REST service offered by the server, that
+ * allows clients to create analysis requests is working properly.
+ * 
+ * @author Julian Espinel
+ */
 public class TestAnalysisRestServices {
 
+	/**
+	 * Returns a defined AnalysisDTO object.
+	 * 
+	 * @return a defined AnalysisDTO object.
+	 */
 	private AnalysisDTO getAnalysisDTOSample() {
 
 		ArrayList<RuleDTO> rulesDTO = new ArrayList<RuleDTO>();
@@ -52,6 +63,10 @@ public class TestAnalysisRestServices {
 		return analysisDTO;
 	}
 
+	/**
+	 * Test the REST service offered by the server, that allows clients to create a new
+	 * analysis request.
+	 */
 	@Test
 	public void testCreateAnalysisRequest() {
 

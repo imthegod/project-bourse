@@ -12,8 +12,22 @@ import co.je.thesis.server.domain.dsl.commands.PropertyCommand;
 import co.je.thesis.server.domain.dsl.commands.SummationCommand;
 import co.je.thesis.server.persistence.analysis.CommandQueryExecutor;
 
+/**
+ * This class knows how to execute any system's command related with the execution of an
+ * analysis request.
+ * 
+ * @author Julian Espinel
+ */
 public class CommandExecutor {
 
+	/**
+	 * Returns the answer of any system's command related with the execution of an
+	 * analysis request.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the command to execute.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	public double getCommandAnswer(String stockSymbol, ICommand command) {
 
 		String commandName = command.getCommandName();
@@ -52,6 +66,12 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a NumberCommand object.
+	 * 
+	 * @param command the NumberCommand object.
+	 * @return the number contained by the NumberCommand object.
+	 */
 	private double executeNumberCommand(ICommand command) {
 
 		NumberCommand numberCommand = (NumberCommand) command;
@@ -60,6 +80,13 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a PropertyCommand.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the PropertyCommand object.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	private double executePropertyCommand(String stockSymbol, ICommand command) {
 
 		double answer = -1;
@@ -74,6 +101,13 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes an AverageCommand.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the command to execute.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	private double executeAverageCommand(String stockSymbol, ICommand command) {
 
 		double answer = -1;
@@ -90,6 +124,13 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a MathOpOver2PropertiesCommand.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the command to execute.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	private double executeMathOpOver2PropertiesCommand(String stockSymbol, ICommand command) {
 
 		double answer = -1;
@@ -108,6 +149,13 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a SummationCommand.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the command to execute.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	private double executeSummationCommand(String stockSymbol, ICommand command) {
 
 		double answer = -1;
@@ -127,6 +175,13 @@ public class CommandExecutor {
 		return answer;
 	}
 
+	/**
+	 * Executes a CompositeCommand.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to to evaluate the command.
+	 * @param command the command to execute.
+	 * @return the answer of the execution of the command, evaluated for the given stock.
+	 */
 	private double executeCompositeCommand(String stockSymbol, ICommand command) {
 
 		double answer = -1;

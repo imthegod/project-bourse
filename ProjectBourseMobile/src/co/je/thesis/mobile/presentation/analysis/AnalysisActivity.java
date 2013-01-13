@@ -14,6 +14,12 @@ import co.je.thesis.mobile.R;
 import co.je.thesis.mobile.logic.analysisManager.AnalysisManager;
 import co.je.thesis.mobile.presentation.UIUtils;
 
+/**
+ * This class extends an Android Activity. This activity provides a menu for the different analysis
+ * related functionalities.
+ * 
+ * @author Julian Espinel
+ */
 public class AnalysisActivity extends Activity implements OnClickListener {
 
 	public static final String TAG = "AnalysisActivity";

@@ -25,6 +25,11 @@ import co.je.thesis.mobile.presentation.dialogs.GetUserNameDialog;
 import co.je.thesis.mobile.presentation.portfolio.PortfolioActivity;
 import co.je.thesis.mobile.presentation.statistics.SelectPortfolioActivity;
 
+/**
+ * Mobile app main activity.
+ * 
+ * @author Julian Espinel
+ */
 public class MainActivity extends Activity implements OnClickListener, ICreateDialogActivity {
 
 	public static final String TAG = "MainActivity";

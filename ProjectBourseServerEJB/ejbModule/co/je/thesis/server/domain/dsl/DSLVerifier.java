@@ -6,8 +6,16 @@ import co.je.thesis.common.domainObjects.ValidRule;
 import co.je.thesis.common.dtos.analysis.AnalysisDTO;
 import co.je.thesis.common.verifiers.AnalysisVerifier;
 
+/**
+ * This class knows how to verify DSL related aspects.
+ * 
+ * @author Julian Espinel
+ */
 public class DSLVerifier {
 	
+	/**
+	 * This attribute knows how to verify the structure and rules of an analysis request.
+	 */
 	private AnalysisVerifier analysisVerifier;
 	
 	public DSLVerifier(ArrayList<ValidRule> validRules) {

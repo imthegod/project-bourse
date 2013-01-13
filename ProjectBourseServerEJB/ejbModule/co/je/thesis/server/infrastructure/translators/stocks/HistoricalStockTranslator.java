@@ -58,6 +58,12 @@ public class HistoricalStockTranslator {
 		return historicalStockDBO;
 	}
 	
+	/**
+	 * Translates a BasicDBObject into a HistoricalStockDBO object.
+	 * 
+	 * @param basicDBO the object we want to translate.
+	 * @return a HistoricalStockDBO object with the information contained by the BasicDBObject.
+	 */
 	public HistoricalStockDBO translateToDBO(BasicDBObject basicDBO) {
 		
 		Date date = basicDBO.getDate(HistoricalStockDBO.DATE);

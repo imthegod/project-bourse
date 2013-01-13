@@ -14,19 +14,36 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import co.je.thesis.mobile.communication.utils.CommunicationUtils;
 
+/**
+ * This class is responsible to know how to retrieve stock data from Internet. 
+ * 
+ * @author Julian Espinel
+ */
 public class StockDataRetriever extends AsyncTask<String, Void, Double> {
 
-	private String getUriForStock(String stockSymbol) {
+	/**
+	 * Returns the URL where a specific stock's data could be located.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to retrieve the data.
+	 * @return the URL where a specific stock's data could be located.
+	 */
+	private String getUrlForStock(String stockSymbol) {
 
-		String uri = "http://query.yahooapis.com/v1/public/yql?q=%20SELECT%20LastTradePriceOnly%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%3D%22"
+		String url = "http://query.yahooapis.com/v1/public/yql?q=%20SELECT%20LastTradePriceOnly%20FROM%20yahoo.finance.quotes%20WHERE%20symbol%3D%22"
 				+ stockSymbol
 				+ "%22&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=";
-		return uri;
+		return url;
 	}
 
+	/**
+	 * Returns a String object which contains the last trade price of a specific stock.
+	 * 
+	 * @param stockSymbol the symbol of the stock for which we want to retrieve its last trade price.
+	 * @return a String object which contains the last trade price of a specific stock.
+	 */
 	private String getStockLastTradePriceJSONEntity(String stockSymbol) {
 
-		String uriString = getUriForStock(stockSymbol);
+		String uriString = getUrlForStock(stockSymbol);
 
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(uriString);
@@ -51,6 +68,12 @@ public class StockDataRetriever extends AsyncTask<String, Void, Double> {
 		return result;
 	}
 
+	/**
+	 * Returns the last trade price of a given stock.
+	 * 
+	 * @param stockSymbol the symbol of the stock from which we want to know its last trade price.
+	 * @return the last trade price of a given stock.
+	 */
 	private double getStockLastTradePrice(String stockSymbol) {
 
 		String jsonEntity = getStockLastTradePriceJSONEntity(stockSymbol);
@@ -74,6 +97,11 @@ public class StockDataRetriever extends AsyncTask<String, Void, Double> {
 		return lastTradePrice;
 	}
 
+	/**
+	 * Calls the getStockLastTradePrice method and returns the results of it.
+	 * 
+	 * @see http://developer.android.com/reference/android/os/AsyncTask.html#doInBackground(Params...)
+	 */
 	@Override
 	protected Double doInBackground(String... params) {
 

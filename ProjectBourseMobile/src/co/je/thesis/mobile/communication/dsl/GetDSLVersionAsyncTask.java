@@ -13,7 +13,7 @@ import android.os.AsyncTask;
 import co.je.thesis.mobile.communication.utils.CommunicationUtils;
 
 /**
- * This class handles the logic necessary for make a GET petition to the server in order to retrieve
+ * This class handles the logic necessary for make a GET request to the server in order to retrieve
  * the DSL version. This operation executes asynchronously.
  * 
  * @author Julian Espinel
