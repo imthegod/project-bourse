@@ -1,6 +1,6 @@
 # Project-Bourse
 
-This repository contains the source code of my undergrad thesis.
+This repository contains the source code of my undergraduate thesis.
 
 ## General description
 
