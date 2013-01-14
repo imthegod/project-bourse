@@ -40,4 +40,4 @@ This project contains the source code that represents the application architectu
 
 ### ProjectBourseWeb
 
-This project contains the source code of the system’s REST services.
+This project contains the source code of the system’s REST services. There are three groups of services: Analysis services, DSL services and Valid Rules services.
