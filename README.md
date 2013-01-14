@@ -16,7 +16,7 @@ Due to it is possible to build complex analysis requests, the server processes a
 
 ## Source code
 
-The source code is organized into 6 different java projects. Below you can find the general description of each project.
+The source code is organized into 6 different java projects. Below you will find the general description of each project.
 
 ### DSLAndRulesSetUp
 
