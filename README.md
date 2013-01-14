@@ -1,4 +1,4 @@
-UT-Private
-==========
+Project-Bourse
+==============
 
-Private repository for my undergraduate thesis (UT)
+This repository contains the source code of my undergrad thesis.
