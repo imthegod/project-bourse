@@ -4,13 +4,13 @@ This repository contains the source code of my undergraduate thesis.
 
 ## General description
 
-Project Bourse is a system that allows stock market investors, create and configure custom technical analyses. They create the technical analyses on their mobile devices, and then send analysis requests to the system's server.
+Project Bourse is a system that allows stock market investors, create and configure custom technical analysis. They create the technical analysis on their mobile devices, and then send them to the system's server in order to be processed.
 
 An analysis request is a sequence of rules defined by the investor through a DSL (Domain Specific Language), which is provided by the system. Here is a basic rule example: "Stocks close price on 21-12-2012 <= 500 USD". It can be read as: "Stocks whose closing price on 21-12-2012 was less than or equal to 500 USD". "Write" rules is very easy because the mobile App’s UI helps the user and assures that all the possible rules the user enunciates are valid, avoiding grammatical and syntax errors.
 
 The mobile app also allows the user to manage and monitor his portfolios. When an investor would like to create a portfolio, he should give it a name and then add stocks to it. At this last step he must define stop loss and take profit limits for every stock. Every X minutes, the mobile app connects to internet and retrieves the current prices of the stocks that compounds the investor’s portfolios. Finally the app compares the current prices with the limits defined for each stock, if a limit is exceeded then notifies the user and allows him to pick one of the following operations: buy, hold, sell, do nothing.
 
-The system's server has the historical data of about 1040 stocks from NYSE and NASDAQ. These data is updated every day when the stock market closes. With this stored data, the server is able to process the analyses defined by the investors and generate a result for each analysis request. The result of an analysis request is a set that contains the stocks which fulfill all the rules that compound that analysis.
+The system's server has the historical data of about 1040 stocks from NYSE and NASDAQ. These data is updated every day when the stock market closes. With this stored data, the server is able to process the analysis defined by the investors and generate a result for each analysis request. The result of an analysis request is a set that contains the stocks which fulfill all the rules that compound that analysis.
 
 Due to it is possible to build complex analysis requests, the server processes all of them asynchronously and stores their results into the DB. When an investor wants to know the results of one analysis created by him, he should retrieve the results from the system's server. When the user gets the results, he is able to pick one of the following operations: buy, hold, sell, do nothing, for each stock into the results set.
 
